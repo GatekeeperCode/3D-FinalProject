@@ -10,9 +10,11 @@ public class EnemyScript : MonoBehaviour
     private int _target;
     private NavMeshAgent agent;
 
+
     public GameObject player;
     public LayerMask _player;
     public bool alert = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +27,7 @@ public class EnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         Vector3 targetDir = player.transform.position - transform.position;
         float angle = Vector3.Angle(targetDir, transform.forward);
 
@@ -43,11 +46,14 @@ public class EnemyScript : MonoBehaviour
     {
         alert = true;
         //print("hi");
+
     }
 
     public void OnTriggerEnter(Collider other)
     {
+
         if (other.gameObject.tag == "waypoint")
+
         {
             _target++;
             if (_target == _waypoints.Count)
@@ -58,6 +64,7 @@ public class EnemyScript : MonoBehaviour
             agent.SetDestination(_waypoints[_target].position);
         }
     }
+
 
     public bool seePlayer()
     {
@@ -71,5 +78,8 @@ public class EnemyScript : MonoBehaviour
             return false;
         }
     }
+}
+
+
 }
 
