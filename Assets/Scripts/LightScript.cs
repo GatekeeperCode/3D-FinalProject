@@ -15,4 +15,12 @@ public class LightScript : MonoBehaviour
     {
         
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            Messenger.Broadcast(Messages.LIGHT_ALERT);
+        }
+    }
 }

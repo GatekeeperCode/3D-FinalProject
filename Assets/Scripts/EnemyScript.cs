@@ -12,6 +12,7 @@ public class EnemyScript : MonoBehaviour
 
     public GameObject player;
     public LayerMask _player;
+    public bool alert = false;
 
     // Start is called before the first frame update
     void Start()
@@ -27,16 +28,26 @@ public class EnemyScript : MonoBehaviour
         Vector3 targetDir = player.transform.position - transform.position;
         float angle = Vector3.Angle(targetDir, transform.forward);
 
-        if (seePlayer() && angle < 45.0f)
+        if ((seePlayer() && angle < 45.0f) || alert)
         {
             agent.SetDestination(player.transform.position);
         }
+    }
 
+    private void OnEnable()
+    {
+        Messenger.AddListener(Messages.LIGHT_ALERT, Alert);
+    }
+
+    public void Alert()
+    {
+        alert = true;
+        //print("hi");
     }
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "waypoint")
+        if (other.gameObject.tag == "waypoint")
         {
             _target++;
             if (_target == _waypoints.Count)
