@@ -7,6 +7,7 @@ public class PlayerLookScript : MonoBehaviour
     Transform _transform;
     public Transform _head;
     float verticalAngle = 0;
+    public float dirMovement;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,8 +18,8 @@ public class PlayerLookScript : MonoBehaviour
     void Update()
     {
         float horizontalAngle = _head.eulerAngles.y + 5 * Input.GetAxis("Mouse X");
-
-
+        //Debug.Log(horizontalAngle);
+        dirMovement = horizontalAngle;
         verticalAngle -= 2 * Input.GetAxis("Mouse Y");
         verticalAngle = Mathf.Clamp(verticalAngle, -60, 60);
         _transform.rotation = Quaternion.Euler(0, horizontalAngle, 0);
