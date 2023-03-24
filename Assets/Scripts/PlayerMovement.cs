@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private float _speed = 500f;
+    private float _maxSpeed = 20f;
+    private float _thresh = 0.01f;
     //Movement adjusters 
     private float _speedMult = 10f;
     private float _walkSpeed = 4f;
@@ -12,16 +13,15 @@ public class PlayerMovement : MonoBehaviour
     private float acceleration = 5f;
 
     //if the player reaches a certain point, this is used to make them fall faster. Jump force is how high the player will jump
-    private float _fallMult = 0.5f;
-    private float _jumpForce = 8f;
+    private float _fallMult = 0.8f;
+    private float _jumpForce = 10f;
     //drag adjustment (basically how fast the player will stop)
     private float _groundDrag = 4f;
 
 
-    
 
-
-    private float _airMult = 0.1f;
+    private float _mult = 5f;
+    private float _airMult = 1f;
     private float xVelocity;
     private float yVelocity;
     private float zVelocity;
@@ -62,14 +62,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(_playerRbody.velocity.y > 2f)
-        {
-            Debug.Log(_playerRbody.velocity.y);
-        }
         //Direction of movement based on player rotation
         xVelocity = Input.GetAxis("Horizontal");
         zVelocity = Input.GetAxis("Vertical");
         _dirMove = trans.forward * zVelocity + trans.right * xVelocity;
+        
 
         //Player speed moves up to walk speed (may need to check if this is working)
         if (!gameObject.GetComponent<PlayerSliding>().getSlideStat())
@@ -79,7 +76,15 @@ public class PlayerMovement : MonoBehaviour
 
 
         //Player accelerates through the vector _dirMove multiplied by move speed and the speed multiplier
-        _playerRbody.AddForce(_dirMove.normalized * _moveSpeed * _speedMult, ForceMode.Acceleration);
+        //_playerRbody.AddForce(_dirMove.normalized * _moveSpeed * _speedMult, ForceMode.Acceleration);
+        if (_isGrounded)
+        {
+            _playerRbody.AddForce(_dirMove.normalized * _moveSpeed * _speedMult, ForceMode.Force);
+        }
+        else
+        {
+            _playerRbody.AddForce(_dirMove.normalized * _moveSpeed * _airMult * _mult, ForceMode.Force);
+        }
         
         //Jump Check
         if (Input.GetKey(KeyCode.Space) && !_isjumping)
@@ -97,7 +102,7 @@ public class PlayerMovement : MonoBehaviour
             _playerRbody.velocity = new Vector3(0, _playerRbody.velocity.y, 0);
         }
 
-
+        
         
 
 
