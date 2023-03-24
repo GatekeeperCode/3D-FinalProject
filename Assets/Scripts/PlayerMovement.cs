@@ -5,16 +5,38 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private float _speed = 500f;
+    //Movement adjusters 
+    private float _speedMult = 10f;
+    private float _walkSpeed = 4f;
+    private float _moveSpeed = 6f;
+    private float acceleration = 5f;
+
+    //if the player reaches a certain point, this is used to make them fall faster. Jump force is how high the player will jump
+    private float _fallMult = 0.5f;
+    private float _jumpForce = 8f;
+    //drag adjustment (basically how fast the player will stop)
+    private float _groundDrag = 4f;
+
+
+    
+
+
+    private float _airMult = 0.1f;
     private float xVelocity;
     private float yVelocity;
     private float zVelocity;
-
+    
+    //_moveDir is uses for player direction 
     private Vector3 _dirMove;
     Rigidbody _playerRbody;
-    private float _jumpForce = 10f;
+    
+    
+    //Check values
     private bool _isGrounded;
     private bool _isjumping;
+   
     public LayerMask _ground;
+    Transform trans;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,14 +44,15 @@ public class PlayerMovement : MonoBehaviour
         _isjumping = false;
         _playerRbody = gameObject.GetComponent<Rigidbody>();
         _playerRbody.useGravity = true;
+        trans = gameObject.transform;
+        _playerRbody.drag = _groundDrag;
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-       // _dirMove = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized;
-       // xVelocity = Input.GetAxis("Horizontal") * _speed * Time.deltaTime;
-       // zVelocity = Input.GetAxis("Vertical") * _speed * Time.deltaTime;
+       //Raycast check to see if the player is on the ground (AT THE MOMENT CHECKING FOR GROUND LAYER)
         _isGrounded = Physics.Raycast(transform.position, Vector3.down, 1f, _ground);
         if (_isGrounded)
         {
@@ -39,20 +62,53 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        xVelocity = Input.GetAxis("Horizontal") * _speed * Time.fixedDeltaTime;
-        zVelocity = Input.GetAxis("Vertical") * _speed * Time.fixedDeltaTime;
-        _playerRbody.velocity = new Vector3(xVelocity, _playerRbody.velocity.y, zVelocity);
+        if(_playerRbody.velocity.y > 2f)
+        {
+            Debug.Log(_playerRbody.velocity.y);
+        }
+        //Direction of movement based on player rotation
+        xVelocity = Input.GetAxis("Horizontal");
+        zVelocity = Input.GetAxis("Vertical");
+        _dirMove = trans.forward * zVelocity + trans.right * xVelocity;
+
+        //Player speed moves up to walk speed (may need to check if this is working)
+        if (!gameObject.GetComponent<PlayerSliding>().getSlideStat())
+        {
+            _moveSpeed = Mathf.Lerp(_moveSpeed, _walkSpeed, acceleration * Time.fixedDeltaTime);
+        }
+
+
+        //Player accelerates through the vector _dirMove multiplied by move speed and the speed multiplier
+        _playerRbody.AddForce(_dirMove.normalized * _moveSpeed * _speedMult, ForceMode.Acceleration);
+        
+        //Jump Check
         if (Input.GetKey(KeyCode.Space) && !_isjumping)
         {
-            //Jump();
-            _isjumping = true;
-            _playerRbody.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
+            Jump();
         }
+        //Check to see if the player is falling (negative y velocity) and adds more downward force to make the jump feel better
+        if(_playerRbody.velocity.y < 0)
+        {
+            _playerRbody.velocity -= Vector3.up * _fallMult;
+        }
+        //This is just a check for when the player is standing still so they they don't slide/jitter around
+        if (xVelocity == 0 && zVelocity == 0)
+        {
+            _playerRbody.velocity = new Vector3(0, _playerRbody.velocity.y, 0);
+        }
+
+
+        
+
+
     }
-    //function to jump
+    //function to jump, adds 
     private void Jump()
     {
-        Debug.Log("Jumping");
+        _playerRbody.velocity = new Vector3(_playerRbody.velocity.x, 0, _playerRbody.velocity.z);
+        _isjumping = true;
         _playerRbody.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
     }
+
+   
 }
