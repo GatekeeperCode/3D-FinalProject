@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private float _maxSpeed = 20f;
+    private float _speed = 5000f;
     private float _thresh = 0.01f;
     //Movement adjusters 
     private float _speedMult = 10f;
@@ -15,10 +16,12 @@ public class PlayerMovement : MonoBehaviour
     //if the player reaches a certain point, this is used to make them fall faster. Jump force is how high the player will jump
     private float _fallMult = 0.8f;
     private float _jumpForce = 10f;
+    private float _slideforce = 1000f;
     //drag adjustment (basically how fast the player will stop)
-    private float _groundDrag = 4f;
+    private float _groundDrag = 1f;
 
-
+    private float _startYScale;
+    private float _slideYScale;
 
     private float _mult = 5f;
     private float _airMult = 1f;
@@ -29,9 +32,10 @@ public class PlayerMovement : MonoBehaviour
     //_moveDir is uses for player direction 
     private Vector3 _dirMove;
     Rigidbody _playerRbody;
-    
-    
+
+
     //Check values
+    private bool _isSliding;
     private bool _isGrounded;
     private bool _isjumping;
    
@@ -46,45 +50,44 @@ public class PlayerMovement : MonoBehaviour
         _playerRbody.useGravity = true;
         trans = gameObject.transform;
         _playerRbody.drag = _groundDrag;
-       
+        _startYScale = trans.localScale.y;
+        _slideYScale = _startYScale / 2;
+
     }
 
     // Update is called once per frame
     void Update()
     {
+       
        //Raycast check to see if the player is on the ground (AT THE MOMENT CHECKING FOR GROUND LAYER)
         _isGrounded = Physics.Raycast(transform.position, Vector3.down, 1f, _ground);
         if (_isGrounded)
         {
             _isjumping = false;
-        }   
+        }
+        if(_playerRbody.velocity.magnitude > 0.5f && Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            StartSlide();
+        }
+        if (Input.GetKeyUp(KeyCode.LeftControl) && _isSliding)
+        {
+            StopSlide();
+        }
     }
 
     private void FixedUpdate()
     {
+        //Debug.Log("transforms:" + transform.forward);
+        Movement();
         //Direction of movement based on player rotation
-        xVelocity = Input.GetAxis("Horizontal");
-        zVelocity = Input.GetAxis("Vertical");
+        xVelocity = Input.GetAxisRaw("Horizontal");
+        zVelocity = Input.GetAxisRaw("Vertical");
         _dirMove = trans.forward * zVelocity + trans.right * xVelocity;
         
 
-        //Player speed moves up to walk speed (may need to check if this is working)
-        if (!gameObject.GetComponent<PlayerSliding>().getSlideStat())
-        {
-            _moveSpeed = Mathf.Lerp(_moveSpeed, _walkSpeed, acceleration * Time.fixedDeltaTime);
-        }
+      
 
 
-        //Player accelerates through the vector _dirMove multiplied by move speed and the speed multiplier
-        //_playerRbody.AddForce(_dirMove.normalized * _moveSpeed * _speedMult, ForceMode.Acceleration);
-        if (_isGrounded)
-        {
-            _playerRbody.AddForce(_dirMove.normalized * _moveSpeed * _speedMult, ForceMode.Force);
-        }
-        else
-        {
-            _playerRbody.AddForce(_dirMove.normalized * _moveSpeed * _airMult * _mult, ForceMode.Force);
-        }
         
         //Jump Check
         if (Input.GetKey(KeyCode.Space) && !_isjumping)
@@ -102,10 +105,6 @@ public class PlayerMovement : MonoBehaviour
             _playerRbody.velocity = new Vector3(0, _playerRbody.velocity.y, 0);
         }
 
-        
-        
-
-
     }
     //function to jump, adds 
     private void Jump()
@@ -114,6 +113,86 @@ public class PlayerMovement : MonoBehaviour
         _isjumping = true;
         _playerRbody.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
     }
+    private void StartSlide()
+    {
+        Debug.Log("Magnitutde at Start: " + _playerRbody.velocity.magnitude);
+        _isSliding = true;
+        trans.localScale = new Vector3(trans.localScale.x, _slideYScale, trans.localScale.z);
+        if(_playerRbody.velocity.magnitude > 0.5f)
+        {
+            if (_isGrounded)
+            {
+                _playerRbody.AddForce(trans.forward * _slideforce);
+            }
+        }
+        
+        
+    }
+    private void StopSlide()
+    {
+        _isSliding = false;
+        trans.localScale = new Vector3(trans.localScale.x, _startYScale, trans.localScale.z);
+    }
+    private void Movement()
+    {
+        _playerRbody.AddForce(Vector3.down * Time.deltaTime * 10f);
+        float magnitude = _playerRbody.velocity.magnitude;
+        float moveAngle = Mathf.Atan2(_playerRbody.velocity.x, _playerRbody.velocity.z) * Mathf.Rad2Deg;
+        float zMag = magnitude * Mathf.Cos(Mathf.DeltaAngle(trans.eulerAngles.y, moveAngle) * Mathf.Deg2Rad);
+        float xMag = magnitude * Mathf.Cos((90 - Mathf.DeltaAngle(trans.eulerAngles.y, moveAngle)) * Mathf.Deg2Rad);
+        //ymag and xmag are the magnitude of movement on the x and z axis
+        if(Mathf.Abs(xMag) > _thresh && Mathf.Abs(xVelocity) < 0.05f || (xMag < -_thresh && xVelocity > 0) || (xMag > _thresh && xVelocity < 0))
+        {
+           _playerRbody.AddForce(_speed * trans.right * Time.deltaTime * -xMag * 0.175f);
+        }
+        if (Mathf.Abs(zMag) > _thresh && Mathf.Abs(zVelocity) < 0.05f || (zMag < -_thresh && zVelocity > 0) || (zMag > _thresh && zVelocity < 0))
+        {
+           _playerRbody.AddForce(_speed * trans.forward* Time.deltaTime * -zMag * 0.175f);
+        }
 
+        if (_isSliding)
+        {
+            _playerRbody.AddForce(_speed * Time.fixedDeltaTime * -_playerRbody.velocity.normalized * 0.01f);
+        }
+
+        if(xVelocity > 0 && xMag > _maxSpeed)
+        {
+            xVelocity = 0;
+        }
+        if (xVelocity > 0 && xMag < -_maxSpeed)
+        {
+            xVelocity = 0;
+        }
+        if (zVelocity > 0 && zMag > _maxSpeed)
+        {
+            zVelocity = 0;
+        }
+        if (zVelocity > 0 && zMag < -_maxSpeed)
+        {
+            zVelocity = 0;
+        }
+
+
+
+        float multiplier = 1f;
+        float multiplier2 = 1f;
+        if(_isGrounded && _isSliding)
+        {
+            multiplier2 = 0f;
+        }
+        if (_isjumping)
+        {
+            multiplier = 0.5f;
+        }
+        else
+        {
+            multiplier = 1f;
+        }
+       // Debug.Log("Multiplier:" + multiplier2);
+        _playerRbody.AddForce(trans.right * xVelocity * _speed * Time.fixedDeltaTime * multiplier);
+        _playerRbody.AddForce(trans.forward * zVelocity * _speed * Time.deltaTime * multiplier * multiplier2);
+       //Debug.Log("Force1: " + trans.right * xVelocity * _speed * Time.deltaTime * 1f);
+       // Debug.Log("Force2: " + trans.forward * zVelocity * _speed * Time.deltaTime * 1f);
+    }
    
 }
