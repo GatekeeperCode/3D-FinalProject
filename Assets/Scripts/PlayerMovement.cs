@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
     //Check values
     private bool _isSliding;
     private bool _isGrounded;
-    private bool _isjumping;
+    public bool _isjumping;
    
     public LayerMask _ground;
     Transform trans;
