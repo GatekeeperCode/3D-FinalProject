@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private float _maxSpeed = 20f;
-    private float _speed = 5000f;
+    private float _speed = 3000f;
     private float _thresh = 0.01f;
     //Movement adjusters 
     private float _speedMult = 10f;
@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
 
     //if the player reaches a certain point, this is used to make them fall faster. Jump force is how high the player will jump
     private float _fallMult = 0.8f;
-    private float _jumpForce = 10f;
+    private float _jumpForce = 100f;
     private float _slideforce = 1000f;
     //drag adjustment (basically how fast the player will stop)
     private float _groundDrag = 1f;
@@ -58,7 +58,6 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
        //Raycast check to see if the player is on the ground (AT THE MOMENT CHECKING FOR GROUND LAYER)
         _isGrounded = Physics.Raycast(transform.position, Vector3.down, 1f, _ground);
         if (_isGrounded)
@@ -109,9 +108,10 @@ public class PlayerMovement : MonoBehaviour
     //function to jump, adds 
     private void Jump()
     {
-        _playerRbody.velocity = new Vector3(_playerRbody.velocity.x, 0, _playerRbody.velocity.z);
+        //_playerRbody.velocity = new Vector3(_playerRbody.velocity.x, 0, _playerRbody.velocity.z);
         _isjumping = true;
-        _playerRbody.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
+        _playerRbody.AddForce(Vector3.up * _jumpForce * 0.5f);
+        _playerRbody.AddForce(Vector2.up * _jumpForce * 1.5f);
     }
     private void StartSlide()
     {
@@ -140,6 +140,7 @@ public class PlayerMovement : MonoBehaviour
         float moveAngle = Mathf.Atan2(_playerRbody.velocity.x, _playerRbody.velocity.z) * Mathf.Rad2Deg;
         float zMag = magnitude * Mathf.Cos(Mathf.DeltaAngle(trans.eulerAngles.y, moveAngle) * Mathf.Deg2Rad);
         float xMag = magnitude * Mathf.Cos((90 - Mathf.DeltaAngle(trans.eulerAngles.y, moveAngle)) * Mathf.Deg2Rad);
+        //Debug.Log("zMag:" + zMag);
         //ymag and xmag are the magnitude of movement on the x and z axis
         if(Mathf.Abs(xMag) > _thresh && Mathf.Abs(xVelocity) < 0.05f || (xMag < -_thresh && xVelocity > 0) || (xMag > _thresh && xVelocity < 0))
         {
@@ -183,6 +184,7 @@ public class PlayerMovement : MonoBehaviour
         if (_isjumping)
         {
             multiplier = 0.5f;
+            multiplier2 = 0.5f;
         }
         else
         {
