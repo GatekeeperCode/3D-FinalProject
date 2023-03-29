@@ -24,7 +24,7 @@ public class PlayerAnimationContr : MonoBehaviour
         float moveAngle = Mathf.Atan2(_rb.velocity.x, _rb.velocity.z) * Mathf.Rad2Deg;
         float zMag = magnitude * Mathf.Cos(Mathf.DeltaAngle(trans.eulerAngles.y, moveAngle) * Mathf.Deg2Rad);
         float xMag = magnitude * Mathf.Cos((90 - Mathf.DeltaAngle(trans.eulerAngles.y, moveAngle)) * Mathf.Deg2Rad);
-        Debug.Log(zMag);
+        
         _playerAnim.SetFloat("xVelocity", /*_rb.velocity.x*/ xMag);
         _playerAnim.SetFloat("zVelocity", /*_rb.velocity.z*/ zMag);
         _playerAnim.SetBool("isJumping", _playerMoveScript._isjumping);

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private float _maxSpeed = 20f;
+    private float _maxSpeed = 10f;
     private float _speed = 3000f;
     private float _thresh = 0.01f;
     //Movement adjusters 
@@ -14,9 +14,9 @@ public class PlayerMovement : MonoBehaviour
     private float acceleration = 5f;
 
     //if the player reaches a certain point, this is used to make them fall faster. Jump force is how high the player will jump
-    private float _fallMult = 0.8f;
-    private float _jumpForce = 100f;
-    private float _slideforce = 1000f;
+    private float _fallMult = 0.25f;
+    private float _jumpForce =200f;
+    private float _slideforce = 500f;
     //drag adjustment (basically how fast the player will stop)
     private float _groundDrag = 1f;
 
@@ -38,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
     private bool _isSliding;
     private bool _isGrounded;
     public bool _isjumping;
+    private bool _readyToJump;
    
     public LayerMask _ground;
     Transform trans;
@@ -45,6 +46,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         _isGrounded = true;
+        _readyToJump = true;
         _isjumping = false;
         _playerRbody = gameObject.GetComponent<Rigidbody>();
         _playerRbody.useGravity = true;
@@ -59,7 +61,9 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
        //Raycast check to see if the player is on the ground (AT THE MOMENT CHECKING FOR GROUND LAYER)
-        _isGrounded = Physics.Raycast(transform.position, Vector3.down, 1f, _ground);
+        _isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.5f, _ground);
+        Debug.DrawRay(trans.position, Vector3.down, Color.red);
+       
         if (_isGrounded)
         {
             _isjumping = false;
@@ -91,6 +95,7 @@ public class PlayerMovement : MonoBehaviour
         //Jump Check
         if (Input.GetKey(KeyCode.Space) && !_isjumping)
         {
+            Debug.Log("Jumping");
             Jump();
         }
         //Check to see if the player is falling (negative y velocity) and adds more downward force to make the jump feel better
@@ -108,10 +113,18 @@ public class PlayerMovement : MonoBehaviour
     //function to jump, adds 
     private void Jump()
     {
+        if(!_isjumping && _readyToJump)
+        {
+            _isjumping = true;
+            _readyToJump = false;
+            _playerRbody.AddForce(Vector2.up * _jumpForce * 1.5f);
+            _playerRbody.AddForce(Vector3.up * _jumpForce * 0.5f);
+            Invoke("JumpReady", 1f);
+        }
         //_playerRbody.velocity = new Vector3(_playerRbody.velocity.x, 0, _playerRbody.velocity.z);
-        _isjumping = true;
-        _playerRbody.AddForce(Vector3.up * _jumpForce * 0.5f);
-        _playerRbody.AddForce(Vector2.up * _jumpForce * 1.5f);
+       
+        
+       
     }
     private void StartSlide()
     {
@@ -160,7 +173,7 @@ public class PlayerMovement : MonoBehaviour
         {
             xVelocity = 0;
         }
-        if (xVelocity > 0 && xMag < -_maxSpeed)
+        if (xVelocity < 0 && xMag < -_maxSpeed)
         {
             xVelocity = 0;
         }
@@ -168,7 +181,7 @@ public class PlayerMovement : MonoBehaviour
         {
             zVelocity = 0;
         }
-        if (zVelocity > 0 && zMag < -_maxSpeed)
+        if (zVelocity < 0 && zMag < -_maxSpeed)
         {
             zVelocity = 0;
         }
@@ -195,6 +208,10 @@ public class PlayerMovement : MonoBehaviour
         _playerRbody.AddForce(trans.forward * zVelocity * _speed * Time.deltaTime * multiplier * multiplier2);
        //Debug.Log("Force1: " + trans.right * xVelocity * _speed * Time.deltaTime * 1f);
        // Debug.Log("Force2: " + trans.forward * zVelocity * _speed * Time.deltaTime * 1f);
+    }
+    private void JumpReady()
+    {
+        _readyToJump = true;
     }
    
 }
