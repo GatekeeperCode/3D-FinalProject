@@ -17,6 +17,7 @@ public class PlayerSliding : MonoBehaviour
     private bool _isSliding;
     private float xVelocity;
     private float zVelocity;
+    private float _speed = 500f;
     // Start is called before the first frame update
     void Start()
 
@@ -76,5 +77,10 @@ public class PlayerSliding : MonoBehaviour
     public bool getSlideStat()
     {
         return _isSliding;
+    }
+
+    private void CounterSlide()
+    {
+        _playerRbody.AddForce(_speed * Time.deltaTime * -_playerRbody.velocity.normalized * 0.2f);
     }
 }
