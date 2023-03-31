@@ -63,7 +63,7 @@ public class PlayerMovement : MonoBehaviour
        //Raycast check to see if the player is on the ground (AT THE MOMENT CHECKING FOR GROUND LAYER)
         _isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.5f, _ground);
         Debug.DrawRay(trans.position, Vector3.down, Color.red);
-       
+        Debug.Log(_isjumping);
         if (_isGrounded)
         {
             _isjumping = false;
