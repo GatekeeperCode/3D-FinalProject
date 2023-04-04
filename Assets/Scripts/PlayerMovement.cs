@@ -169,7 +169,7 @@ public class PlayerMovement : MonoBehaviour
         //Debug.Log("Magnitutde at Start: " + _playerRbody.velocity.magnitude);
 
         trans.localScale = new Vector3(trans.localScale.x, _slideYScale, trans.localScale.z);
-        if (_playerRbody.velocity.magnitude > 0.5f)
+        if (_playerRbody.velocity.magnitude > 1f)
         {
             if (_isGrounded)
             {
