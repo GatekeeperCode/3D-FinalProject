@@ -75,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
     {
         InputDetection();
         //Raycast check to see if the player is on the ground (AT THE MOMENT CHECKING FOR GROUND LAYER)
-        _isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.5f, _ground);
+        _isGrounded = Physics.Raycast(transform.position, Vector3.down, 1f, _ground);
         Debug.DrawRay(trans.position, Vector3.down, Color.red);
         //_isCrouched = Input.GetKey(KeyCode.C);
         //Debug.Log(_isCrouched);
