@@ -20,7 +20,11 @@ public class EndScreenManager : MonoBehaviour
     {
         if(!_effectManager.isPlaying && !_musicPlayer.isPlaying) {
             _musicPlayer.Play();
-        }   
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 
    public void OnHomeButtonCLick()
