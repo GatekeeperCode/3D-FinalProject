@@ -50,6 +50,7 @@ public class PlayerMovement : MonoBehaviour
     private bool _isGrounded;
     public bool _isjumping;
     private bool _readyToJump;
+    private bool _onLadder;
 
     public LayerMask _ground;
     Transform trans;
@@ -61,6 +62,7 @@ public class PlayerMovement : MonoBehaviour
         _readyToJump = true;
         _isjumping = false;
         _isCrouched = false;
+        _onLadder = false;
         _playerRbody = gameObject.GetComponent<Rigidbody>();
         _playerRbody.useGravity = true;
         trans = gameObject.transform;
@@ -127,7 +129,7 @@ public class PlayerMovement : MonoBehaviour
             Jump();
         }
         //Check to see if the player is falling (negative y velocity) and adds more downward force to make the jump feel better
-        if (_playerRbody.velocity.y < 0f)
+        if (_playerRbody.velocity.y < 0f && !_onLadder)
         {
             _playerRbody.velocity += Vector3.up * _fallMult * Physics.gravity.y * Time.fixedDeltaTime;
         }
@@ -136,11 +138,17 @@ public class PlayerMovement : MonoBehaviour
          {
              _playerRbody.velocity = new Vector3(0, _playerRbody.velocity.y, 0);
          }*/
+        
+        //This is for ladder Climbing - Mike
+        if(Input.GetKey(KeyCode.LeftShift) && _onLadder)
+        {
+            _playerRbody.velocity = new Vector3(xVelocity, 2, zVelocity);
+        }
     }
     //function to jump, adds 
     private void Jump()
     {
-        if (!_isjumping && _readyToJump)
+        if (!_isjumping && _readyToJump && !_onLadder)
         {
             _isjumping = true;
             _readyToJump = false;
@@ -257,6 +265,24 @@ public class PlayerMovement : MonoBehaviour
     private void JumpReady()
     {
         _readyToJump = true;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag.Equals("Ladder"))
+        {
+            _playerRbody.useGravity = false;
+            _onLadder = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag.Equals("Ladder"))
+        {
+            _playerRbody.useGravity = true;
+            _onLadder = false;
+        }
     }
 
 }
