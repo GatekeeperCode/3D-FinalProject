@@ -23,6 +23,11 @@ public class ButtonScript : MonoBehaviour
         SceneManager.LoadScene("Level 1 - Chase");
     }
 
+    public void MenuClick()
+    {
+        SceneManager.LoadScene("TitleScene");
+    }
+
     public void QuitClick()
     {
         Application.Quit();
