@@ -6,12 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/EndScreen.unity
-    guid: 4214080bdd6cb074592c9d7a7f38ebe6
-  - enabled: 1
     path: Assets/Scenes/TitleScene.unity
     guid: 8d2b9f3f90ebf974d92c79d2910a80ca
   - enabled: 1
     path: Assets/Scenes/Level 1 - Chase.unity
     guid: 914775d11c3f4504ba15b5f15afd0f30
+  - enabled: 1
+    path: Assets/Scenes/Level 2 - Climb.unity
+    guid: a4e5d2df82ecb924f928e02fbf8b75ad
+  - enabled: 1
+    path: Assets/Scenes/EndScreen.unity
+    guid: 4214080bdd6cb074592c9d7a7f38ebe6
   m_configObjects: {}
