@@ -25,6 +25,7 @@ public class TimerScript : MonoBehaviour
         _timerText.text = "Time: 00:00";
         _timerRunning = true;
         _elapsedTime = 0;
+        StartCoroutine(UpdateTimer());
     }
 
     // Update is called once per frame
@@ -34,7 +35,7 @@ public class TimerScript : MonoBehaviour
         //replace it with the timer that has the time already.
         if(SceneManager.GetActiveScene().buildIndex > 1)
         {
-            //Destroy(whatever object has the timer)
+            Destroy(GameObject.FindGameObjectWithTag("Timer"));
         }
     }
     /**

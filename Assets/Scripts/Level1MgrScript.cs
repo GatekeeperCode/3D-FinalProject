@@ -5,10 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class Level1MgrScript : MonoBehaviour
 {
+    private TimerScript _timer;
     // Start is called before the first frame update
     void Start()
     {
         Messenger.AddListener(Messages.LEVEL_TRANSFER, changeLevel);
+        _timer = GameObject.FindObjectOfType<TimerScript>();
+        
     }
 
     // Update is called once per frame
@@ -19,6 +22,7 @@ public class Level1MgrScript : MonoBehaviour
 
     void changeLevel()
     {
+        PlayerPrefs.SetFloat("Level1Time", _timer._elapsedTime);
         Messenger.RemoveListener(Messages.LEVEL_TRANSFER, changeLevel);
         SceneManager.LoadScene(2);
     }
