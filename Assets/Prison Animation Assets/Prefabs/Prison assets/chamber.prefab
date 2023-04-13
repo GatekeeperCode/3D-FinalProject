@@ -114,6 +114,7 @@ GameObject:
   - component: {fileID: 6316488661996750322}
   - component: {fileID: 2631483973748358915}
   - component: {fileID: 5601026011103247851}
+  - component: {fileID: 2156875544018219193}
   m_Layer: 0
   m_Name: chamber
   m_TagString: Untagged
@@ -245,3 +246,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.067853436, y: 2.6849844, z: 1.0157441}
   m_Center: {x: 1.5024765, y: -0.09143829, z: 0.6170055}
+--- !u!65 &2156875544018219193
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500174627940789926}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.6112113, y: 0, z: 2.0672817}
+  m_Center: {x: -0.26920915, y: -1.4339304, z: 0.09123635}
