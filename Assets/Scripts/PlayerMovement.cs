@@ -48,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
     private bool _isSliding;
     private bool _isCrouched;
     private bool _isGrounded;
+    private RaycastHit ray;
     public bool _isjumping;
     private bool _readyToJump;
     private bool _onLadder;
@@ -77,8 +78,9 @@ public class PlayerMovement : MonoBehaviour
     {
         InputDetection();
         //Raycast check to see if the player is on the ground (AT THE MOMENT CHECKING FOR GROUND LAYER)
-        _isGrounded = Physics.Raycast(transform.position, Vector3.down, 1f, _ground);
-        Debug.DrawRay(trans.position, Vector3.down, Color.red);
+        //_isGrounded = Physics.Raycast(transform.position, Vector3.down, 1f, _ground);
+        _isGrounded = Physics.SphereCast(trans.position, 0.52f, -trans.up, out ray, 0.52f, _ground);
+        //Debug.DrawSphere(trans.position, Vector3.down, Color.red);
         //_isCrouched = Input.GetKey(KeyCode.C);
         //Debug.Log(_isCrouched);
         if (_isGrounded)
@@ -155,7 +157,7 @@ public class PlayerMovement : MonoBehaviour
 
             _playerRbody.AddForce(Vector2.up * _jumpForce * 1.2f);
             _playerRbody.AddForce(Vector3.up * _jumpForce * 0.5f);
-            Invoke("JumpReady", 1f);
+            Invoke("JumpReady", 0.5f);
         }
         //_playerRbody.velocity = new Vector3(_playerRbody.velocity.x, 0, _playerRbody.velocity.z);
 
@@ -177,6 +179,7 @@ public class PlayerMovement : MonoBehaviour
         //Debug.Log("Magnitutde at Start: " + _playerRbody.velocity.magnitude);
 
         trans.localScale = new Vector3(trans.localScale.x, _slideYScale, trans.localScale.z);
+        trans.position = new Vector3(trans.position.x, trans.position.y - 0.5f, trans.position.z);
         if (_playerRbody.velocity.magnitude > 1f)
         {
             if (_isGrounded)
@@ -193,6 +196,7 @@ public class PlayerMovement : MonoBehaviour
     {
         _isSliding = false;
         trans.localScale = new Vector3(trans.localScale.x, _startYScale, trans.localScale.z);
+        trans.position = new Vector3(trans.position.x, trans.position.y + 0.5f, trans.position.z);
     }
     private void Movement()
     {
@@ -234,6 +238,7 @@ public class PlayerMovement : MonoBehaviour
             zVelocity = 0;
         }
 
+        
 
 
         float multiplier = 1f;
@@ -283,6 +288,12 @@ public class PlayerMovement : MonoBehaviour
             _playerRbody.useGravity = true;
             _onLadder = false;
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(gameObject.transform.position-gameObject.transform.up*0.52f, 0.52f);
     }
 
 }
