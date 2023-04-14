@@ -27,6 +27,6 @@ public class Level2MgrScript : MonoBehaviour
         PlayerPrefs.SetFloat("PlayerLevel2Time", _timer._elapsedTime-PlayerPrefs.GetFloat("PlayerLevel1Time"));
         
         Messenger.RemoveListener(Messages.LEVEL_TRANSFER, changeLevel);
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("WinScene");
     }
 }
