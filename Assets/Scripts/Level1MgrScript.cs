@@ -52,7 +52,7 @@ public class Level1MgrScript : MonoBehaviour
 
     void changeLevel()
     {
-        PlayerPrefs.SetFloat("Level1Time", _timer._elapsedTime);
+        PlayerPrefs.SetFloat("PlayerLevel1Time", _timer._elapsedTime);
         Messenger.RemoveListener(Messages.LEVEL_TRANSFER, changeLevel);
         SceneManager.LoadScene(2);
     }
