@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyScript : MonoBehaviour
+public class EnemyStealthScript : MonoBehaviour
 {
     [SerializeField]
     private List<Transform> _waypoints;
