@@ -15,17 +15,21 @@ public class WinScreenMgr : MonoBehaviour
     void Start()
     {
         _highScoreShowing = false;
-        if(PlayerPrefs.GetFloat("Level1BestTime") > PlayerPrefs.GetFloat("PlayerLevel1Time"))
+        if(PlayerPrefs.GetFloat("Level1BestTime") > PlayerPrefs.GetFloat("PlayerLevel1Time") || PlayerPrefs.GetFloat("Level1BestTime") == 0f)
         {
             PlayerPrefs.SetFloat("Level1BestTime", PlayerPrefs.GetFloat("PlayerLevel1Time"));
         }
-        if (PlayerPrefs.GetFloat("Level2BestTime") > PlayerPrefs.GetFloat("PlayerLevel2Time"))
+        if (PlayerPrefs.GetFloat("Level2BestTime") > PlayerPrefs.GetFloat("PlayerLevel2Time") || PlayerPrefs.GetFloat("Level2BestTime") == 0f)
         {
             PlayerPrefs.SetFloat("Level2BestTime", PlayerPrefs.GetFloat("PlayerLevel2Time"));
         }
+        {        if (PlayerPrefs.GetFloat("BestTotalTime") > PlayerPrefs.GetFloat("PlayerTotalTime") || PlayerPrefs.GetFloat("BestTotalTime") == 0f)
 
-        _playerScores.text = "Your Score \n" + TimeSpan.FromSeconds(PlayerPrefs.GetFloat("PlayerLevel1Time")).ToString() + "\n" + TimeSpan.FromSeconds(PlayerPrefs.GetFloat("PlayerLevel2Time")).ToString();
-        _highScoreText.text = "HighScores \n" + TimeSpan.FromSeconds(PlayerPrefs.GetFloat("Level1BestTime")).ToString() + "\n" + TimeSpan.FromSeconds(PlayerPrefs.GetFloat("Level2BestTime")).ToString();
+            PlayerPrefs.SetFloat("BestTotalTime", PlayerPrefs.GetFloat("PlayerTotalTime"));
+        }
+
+        _playerScores.text = "Your Score \n" + "Level 1: " + TimeSpan.FromSeconds(PlayerPrefs.GetFloat("PlayerLevel1Time")).ToString("mm':'ss") + "\n" + "Level 2: " + TimeSpan.FromSeconds(PlayerPrefs.GetFloat("PlayerLevel2Time")).ToString("mm':'ss") +"\n" + "Total Time: " + TimeSpan.FromSeconds(PlayerPrefs.GetFloat("PlayerTotalTime")).ToString("mm':'ss");
+        _highScoreText.text = "HighScores \n" + "Level 1: " + TimeSpan.FromSeconds(PlayerPrefs.GetFloat("Level1BestTime")).ToString("mm':'ss") + "\n" + "Level 2: " + TimeSpan.FromSeconds(PlayerPrefs.GetFloat("Level2BestTime")).ToString("mm':'ss") + "\n" + "Total Time: " + TimeSpan.FromSeconds(PlayerPrefs.GetFloat("BestTotalTime")).ToString("mm':'ss");
     }
     
     // Update is called once per frame
