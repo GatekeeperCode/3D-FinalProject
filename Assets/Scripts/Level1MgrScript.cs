@@ -30,23 +30,23 @@ public class Level1MgrScript : MonoBehaviour
 
     IEnumerator SpawnEnemies()
     {
-        if (_timer._elapsedTime < 30)
-        {
-            int i = Random.Range(0, _spawnPoints.Count - 1);
-            GameObject chaseEnemy = Instantiate(_chaseEnemyPrefab, _spawnPoints[i]);
-            yield return new WaitForSeconds(10);
-        }
-        else if (_timer._elapsedTime < 60)
-        {
-            int i = Random.Range(0, _spawnPoints.Count - 1);
-            GameObject chaseEnemy = Instantiate(_chaseEnemyPrefab, _spawnPoints[i]);
-            yield return new WaitForSeconds(8);
-        }
-        else if (_timer._elapsedTime < 90)
+        if (_timer._elapsedTime < 15)
         {
             int i = Random.Range(0, _spawnPoints.Count - 1);
             GameObject chaseEnemy = Instantiate(_chaseEnemyPrefab, _spawnPoints[i]);
             yield return new WaitForSeconds(5);
+        }
+        else if (_timer._elapsedTime < 20)
+        {
+            int i = Random.Range(0, _spawnPoints.Count - 1);
+            GameObject chaseEnemy = Instantiate(_chaseEnemyPrefab, _spawnPoints[i]);
+            yield return new WaitForSeconds(4);
+        }
+        else if (_timer._elapsedTime < 25)
+        {
+            int i = Random.Range(0, _spawnPoints.Count - 1);
+            GameObject chaseEnemy = Instantiate(_chaseEnemyPrefab, _spawnPoints[i]);
+            yield return new WaitForSeconds(3);
         }
     }
 
