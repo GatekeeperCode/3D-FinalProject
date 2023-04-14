@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Level 2 - Climb.unity
     guid: a4e5d2df82ecb924f928e02fbf8b75ad
   - enabled: 1
-    path: Assets/Scenes/EndScreen.unity
+    path: Assets/Scenes/EndScene.unity
     guid: 4214080bdd6cb074592c9d7a7f38ebe6
+  - enabled: 1
+    path: Assets/Scenes/WinScene.unity
+    guid: 5ac8743b7ed2df64d892a1947da4e337
   m_configObjects: {}

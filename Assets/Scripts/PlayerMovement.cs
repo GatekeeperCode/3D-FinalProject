@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public Level1MgrScript _managerScript;
+    public bool isDead;
+
     private float _maxSpeed = 8f;
     private float _crouchMax = 4f;
     private float originMax;
@@ -58,6 +61,9 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _managerScript = FindObjectOfType<Level1MgrScript>();
+        isDead = false;
+
         originMax = _maxSpeed;
         _isGrounded = true;
         _readyToJump = true;
@@ -76,28 +82,30 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        InputDetection();
-        //Raycast check to see if the player is on the ground (AT THE MOMENT CHECKING FOR GROUND LAYER)
-        //_isGrounded = Physics.Raycast(transform.position, Vector3.down, 1f, _ground);
-        _isGrounded = Physics.SphereCast(trans.position, 0.52f, -trans.up, out ray, 0.52f, _ground);
-        //Debug.DrawSphere(trans.position, Vector3.down, Color.red);
-        //_isCrouched = Input.GetKey(KeyCode.C);
-        //Debug.Log(_isCrouched);
-        if (_isGrounded)
+        if (!isDead)
         {
-            _isjumping = false;
+            InputDetection();
+            //Raycast check to see if the player is on the ground (AT THE MOMENT CHECKING FOR GROUND LAYER)
+            //_isGrounded = Physics.Raycast(transform.position, Vector3.down, 1f, _ground);
+            _isGrounded = Physics.SphereCast(trans.position, 0.52f, -trans.up, out ray, 0.52f, _ground);
+            //Debug.DrawSphere(trans.position, Vector3.down, Color.red);
+            //_isCrouched = Input.GetKey(KeyCode.C);
+            //Debug.Log(_isCrouched);
+            if (_isGrounded)
+            {
+                _isjumping = false;
+            }
+
+
+            /*if (_isCrouched)
+            {
+                StartCrouch();
+            }
+            else
+            {
+                EndCrouch();
+            }*/
         }
-
-
-        /*if (_isCrouched)
-        {
-            StartCrouch();
-        }
-        else
-        {
-            EndCrouch();
-        }*/
-
     }
     private void InputDetection()
     {
@@ -116,35 +124,38 @@ public class PlayerMovement : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        //Debug.Log("_isSliding: " + _isSliding);
-        //Debug.Log("_readyToJump: " + _readyToJump);
-        Movement();
-        //Direction of movement based on player rotation
-        xVelocity = Input.GetAxisRaw("Horizontal");
-        zVelocity = Input.GetAxisRaw("Vertical");
-        _dirMove = trans.forward * zVelocity + trans.right * xVelocity;
+        if (!isDead)
+        {
+            //Debug.Log("_isSliding: " + _isSliding);
+            //Debug.Log("_readyToJump: " + _readyToJump);
+            Movement();
+            //Direction of movement based on player rotation
+            xVelocity = Input.GetAxisRaw("Horizontal");
+            zVelocity = Input.GetAxisRaw("Vertical");
+            _dirMove = trans.forward * zVelocity + trans.right * xVelocity;
 
-        //Jump Check
-        if (Input.GetKey(KeyCode.Space) && !_isjumping)
-        {
-            // Debug.Log("Jumping");
-            Jump();
-        }
-        //Check to see if the player is falling (negative y velocity) and adds more downward force to make the jump feel better
-        if (_playerRbody.velocity.y < 0f && !_onLadder)
-        {
-            _playerRbody.velocity += Vector3.up * _fallMult * Physics.gravity.y * Time.fixedDeltaTime;
-        }
-        //This is just a check for when the player is standing still so they they don't slide/jitter around
-        /* if (xVelocity == 0 && zVelocity == 0)
-         {
-             _playerRbody.velocity = new Vector3(0, _playerRbody.velocity.y, 0);
-         }*/
-        
-        //This is for ladder Climbing - Mike
-        if(Input.GetKey(KeyCode.LeftShift) && _onLadder)
-        {
-            _playerRbody.velocity = new Vector3(xVelocity, 2, zVelocity);
+            //Jump Check
+            if (Input.GetKey(KeyCode.Space) && !_isjumping)
+            {
+                // Debug.Log("Jumping");
+                Jump();
+            }
+            //Check to see if the player is falling (negative y velocity) and adds more downward force to make the jump feel better
+            if (_playerRbody.velocity.y < 0f && !_onLadder)
+            {
+                _playerRbody.velocity += Vector3.up * _fallMult * Physics.gravity.y * Time.fixedDeltaTime;
+            }
+            //This is just a check for when the player is standing still so they they don't slide/jitter around
+            /* if (xVelocity == 0 && zVelocity == 0)
+             {
+                 _playerRbody.velocity = new Vector3(0, _playerRbody.velocity.y, 0);
+             }*/
+
+            //This is for ladder Climbing - Mike
+            if (Input.GetKey(KeyCode.LeftShift) && _onLadder)
+            {
+                _playerRbody.velocity = new Vector3(xVelocity, 2, zVelocity);
+            }
         }
     }
     //function to jump, adds 
@@ -274,11 +285,17 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag.Equals("Ladder"))
+        if (other.tag.Equals("Enemy"))
+        {
+            isDead = true;
+            _managerScript.playerDeath();
+        }
+        else if(other.tag.Equals("Ladder"))
         {
             _playerRbody.useGravity = false;
             _onLadder = true;
         }
+        
     }
 
     private void OnTriggerExit(Collider other)
