@@ -24,7 +24,8 @@ public class Level2MgrScript : MonoBehaviour
 
     void changeLevel()
     {
-        PlayerPrefs.SetFloat("Level2Time", _timer._elapsedTime);
+        PlayerPrefs.SetFloat("PlayerLevel2Time", _timer._elapsedTime-PlayerPrefs.GetFloat("PlayerLevel1Time"));
+        
         Messenger.RemoveListener(Messages.LEVEL_TRANSFER, changeLevel);
         SceneManager.LoadScene(0);
     }
