@@ -1,0 +1,913 @@
+fileFormatVersion: 2
+guid: 910ef32d780850749bb1451206ffa4fa
+ModelImporter:
+  serializedVersion: 20200
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: ammo_bone01
+  - first:
+      1: 100002
+    second: ammo_bone02
+  - first:
+      1: 100004
+    second: brow_L_bone01
+  - first:
+      1: 100006
+    second: brow_L_bone02
+  - first:
+      1: 100008
+    second: brow_L_bone03
+  - first:
+      1: 100010
+    second: brow_R_bone01
+  - first:
+      1: 100012
+    second: brow_R_bone02
+  - first:
+      1: 100014
+    second: brow_R_bone03
+  - first:
+      1: 100016
+    second: Buckle_bone
+  - first:
+      1: 100018
+    second: eye_L_bone
+  - first:
+      1: 100020
+    second: eye_R_bone
+  - first:
+      1: 100022
+    second: eyelid_L_bone
+  - first:
+      1: 100024
+    second: eyelid_R_bone
+  - first:
+      1: 100026
+    second: flashlight_bone
+  - first:
+      1: 100028
+    second: flashlight_strap_bone
+  - first:
+      1: 100030
+    second: gun_clip_bone
+  - first:
+      1: 100032
+    second: gun_handle_bone
+  - first:
+      1: 100034
+    second: gun_shaft_bone
+  - first:
+      1: 100036
+    second: Handcuff_bone01
+  - first:
+      1: 100038
+    second: Handcuff_bone02
+  - first:
+      1: 100040
+    second: Hat_bone
+  - first:
+      1: 100042
+    second: Head
+  - first:
+      1: 100044
+    second: holster_bone
+  - first:
+      1: 100046
+    second: LCalf
+  - first:
+      1: 100048
+    second: LCollarbone
+  - first:
+      1: 100050
+    second: Left_index_1
+  - first:
+      1: 100052
+    second: Left_index_2
+  - first:
+      1: 100054
+    second: Left_index_3
+  - first:
+      1: 100056
+    second: Left_middle_1
+  - first:
+      1: 100058
+    second: Left_middle_2
+  - first:
+      1: 100060
+    second: Left_middle_3
+  - first:
+      1: 100062
+    second: Left_pinky_1
+  - first:
+      1: 100064
+    second: Left_pinky_2
+  - first:
+      1: 100066
+    second: Left_pinky_3
+  - first:
+      1: 100068
+    second: Left_ring_1
+  - first:
+      1: 100070
+    second: Left_ring_2
+  - first:
+      1: 100072
+    second: Left_ring_3
+  - first:
+      1: 100074
+    second: Left_thumb_1
+  - first:
+      1: 100076
+    second: Left_thumb_2
+  - first:
+      1: 100078
+    second: Left_thumb_3
+  - first:
+      1: 100080
+    second: Left_toe1
+  - first:
+      1: 100082
+    second: LFoot
+  - first:
+      1: 100084
+    second: LForearm
+  - first:
+      1: 100086
+    second: Lip_Bottom_Bone01
+  - first:
+      1: 100088
+    second: Lip_Bottom_Bone02
+  - first:
+      1: 100090
+    second: Lip_Bottom_Bone03
+  - first:
+      1: 100092
+    second: Lip_Bottom_Bone04
+  - first:
+      1: 100094
+    second: Lip_Bottom_Bone05
+  - first:
+      1: 100096
+    second: Lip_Top_Bone01
+  - first:
+      1: 100098
+    second: Lip_Top_Bone02
+  - first:
+      1: 100100
+    second: Lip_Top_Bone03
+  - first:
+      1: 100102
+    second: Lip_Top_Bone04
+  - first:
+      1: 100104
+    second: Lip_Top_Bone05
+  - first:
+      1: 100106
+    second: LPalm
+  - first:
+      1: 100108
+    second: LThigh
+  - first:
+      1: 100110
+    second: LUpperarm
+  - first:
+      1: 100112
+    second: mouth_Bottom_bone
+  - first:
+      1: 100114
+    second: mouth_Top_bone
+  - first:
+      1: 100116
+    second: Neck1
+  - first:
+      1: 100118
+    second: Neck2
+  - first:
+      1: 100120
+    second: nose_L_bone
+  - first:
+      1: 100122
+    second: nose_R_bone
+  - first:
+      1: 100124
+    second: radio_bone
+  - first:
+      1: 100126
+    second: radio_case_bone
+  - first:
+      1: 100128
+    second: RCalf
+  - first:
+      1: 100130
+    second: RCollarbone
+  - first:
+      1: 100132
+    second: Reference
+  - first:
+      1: 100134
+    second: RFoot
+  - first:
+      1: 100136
+    second: RForearm
+  - first:
+      1: 100138
+    second: Ribcage
+  - first:
+      1: 100140
+    second: Right_index_1
+  - first:
+      1: 100142
+    second: Right_index_2
+  - first:
+      1: 100144
+    second: Right_index_3
+  - first:
+      1: 100146
+    second: Right_middle_1
+  - first:
+      1: 100148
+    second: Right_middle_2
+  - first:
+      1: 100150
+    second: Right_middle_3
+  - first:
+      1: 100152
+    second: Right_pinky_1
+  - first:
+      1: 100154
+    second: Right_pinky_2
+  - first:
+      1: 100156
+    second: Right_pinky_3
+  - first:
+      1: 100158
+    second: Right_ring_1
+  - first:
+      1: 100160
+    second: Right_ring_2
+  - first:
+      1: 100162
+    second: Right_ring_3
+  - first:
+      1: 100164
+    second: Right_thumb_1
+  - first:
+      1: 100166
+    second: Right_thumb_2
+  - first:
+      1: 100168
+    second: Right_thumb_3
+  - first:
+      1: 100170
+    second: Right_toe1
+  - first:
+      1: 100172
+    second: RPalm
+  - first:
+      1: 100174
+    second: RThigh
+  - first:
+      1: 100176
+    second: RUpperarm
+  - first:
+      1: 100178
+    second: Spine1
+  - first:
+      1: 100180
+    second: Spine2
+  - first:
+      1: 100182
+    second: Spine3
+  - first:
+      1: 100184
+    second: Spine4
+  - first:
+      1: 100186
+    second: tongue_Bone01
+  - first:
+      1: 100188
+    second: tongue_Bone02
+  - first:
+      1: 100190
+    second: tongue_Bone03
+  - first:
+      1: 100192
+    second: //RootNode
+  - first:
+      4: 400000
+    second: ammo_bone01
+  - first:
+      4: 400002
+    second: ammo_bone02
+  - first:
+      4: 400004
+    second: brow_L_bone01
+  - first:
+      4: 400006
+    second: brow_L_bone02
+  - first:
+      4: 400008
+    second: brow_L_bone03
+  - first:
+      4: 400010
+    second: brow_R_bone01
+  - first:
+      4: 400012
+    second: brow_R_bone02
+  - first:
+      4: 400014
+    second: brow_R_bone03
+  - first:
+      4: 400016
+    second: Buckle_bone
+  - first:
+      4: 400018
+    second: eye_L_bone
+  - first:
+      4: 400020
+    second: eye_R_bone
+  - first:
+      4: 400022
+    second: eyelid_L_bone
+  - first:
+      4: 400024
+    second: eyelid_R_bone
+  - first:
+      4: 400026
+    second: flashlight_bone
+  - first:
+      4: 400028
+    second: flashlight_strap_bone
+  - first:
+      4: 400030
+    second: gun_clip_bone
+  - first:
+      4: 400032
+    second: gun_handle_bone
+  - first:
+      4: 400034
+    second: gun_shaft_bone
+  - first:
+      4: 400036
+    second: Handcuff_bone01
+  - first:
+      4: 400038
+    second: Handcuff_bone02
+  - first:
+      4: 400040
+    second: Hat_bone
+  - first:
+      4: 400042
+    second: Head
+  - first:
+      4: 400044
+    second: holster_bone
+  - first:
+      4: 400046
+    second: LCalf
+  - first:
+      4: 400048
+    second: LCollarbone
+  - first:
+      4: 400050
+    second: Left_index_1
+  - first:
+      4: 400052
+    second: Left_index_2
+  - first:
+      4: 400054
+    second: Left_index_3
+  - first:
+      4: 400056
+    second: Left_middle_1
+  - first:
+      4: 400058
+    second: Left_middle_2
+  - first:
+      4: 400060
+    second: Left_middle_3
+  - first:
+      4: 400062
+    second: Left_pinky_1
+  - first:
+      4: 400064
+    second: Left_pinky_2
+  - first:
+      4: 400066
+    second: Left_pinky_3
+  - first:
+      4: 400068
+    second: Left_ring_1
+  - first:
+      4: 400070
+    second: Left_ring_2
+  - first:
+      4: 400072
+    second: Left_ring_3
+  - first:
+      4: 400074
+    second: Left_thumb_1
+  - first:
+      4: 400076
+    second: Left_thumb_2
+  - first:
+      4: 400078
+    second: Left_thumb_3
+  - first:
+      4: 400080
+    second: Left_toe1
+  - first:
+      4: 400082
+    second: LFoot
+  - first:
+      4: 400084
+    second: LForearm
+  - first:
+      4: 400086
+    second: Lip_Bottom_Bone01
+  - first:
+      4: 400088
+    second: Lip_Bottom_Bone02
+  - first:
+      4: 400090
+    second: Lip_Bottom_Bone03
+  - first:
+      4: 400092
+    second: Lip_Bottom_Bone04
+  - first:
+      4: 400094
+    second: Lip_Bottom_Bone05
+  - first:
+      4: 400096
+    second: Lip_Top_Bone01
+  - first:
+      4: 400098
+    second: Lip_Top_Bone02
+  - first:
+      4: 400100
+    second: Lip_Top_Bone03
+  - first:
+      4: 400102
+    second: Lip_Top_Bone04
+  - first:
+      4: 400104
+    second: Lip_Top_Bone05
+  - first:
+      4: 400106
+    second: LPalm
+  - first:
+      4: 400108
+    second: LThigh
+  - first:
+      4: 400110
+    second: LUpperarm
+  - first:
+      4: 400112
+    second: mouth_Bottom_bone
+  - first:
+      4: 400114
+    second: mouth_Top_bone
+  - first:
+      4: 400116
+    second: Neck1
+  - first:
+      4: 400118
+    second: Neck2
+  - first:
+      4: 400120
+    second: nose_L_bone
+  - first:
+      4: 400122
+    second: nose_R_bone
+  - first:
+      4: 400124
+    second: radio_bone
+  - first:
+      4: 400126
+    second: radio_case_bone
+  - first:
+      4: 400128
+    second: RCalf
+  - first:
+      4: 400130
+    second: RCollarbone
+  - first:
+      4: 400132
+    second: Reference
+  - first:
+      4: 400134
+    second: RFoot
+  - first:
+      4: 400136
+    second: RForearm
+  - first:
+      4: 400138
+    second: Ribcage
+  - first:
+      4: 400140
+    second: Right_index_1
+  - first:
+      4: 400142
+    second: Right_index_2
+  - first:
+      4: 400144
+    second: Right_index_3
+  - first:
+      4: 400146
+    second: Right_middle_1
+  - first:
+      4: 400148
+    second: Right_middle_2
+  - first:
+      4: 400150
+    second: Right_middle_3
+  - first:
+      4: 400152
+    second: Right_pinky_1
+  - first:
+      4: 400154
+    second: Right_pinky_2
+  - first:
+      4: 400156
+    second: Right_pinky_3
+  - first:
+      4: 400158
+    second: Right_ring_1
+  - first:
+      4: 400160
+    second: Right_ring_2
+  - first:
+      4: 400162
+    second: Right_ring_3
+  - first:
+      4: 400164
+    second: Right_thumb_1
+  - first:
+      4: 400166
+    second: Right_thumb_2
+  - first:
+      4: 400168
+    second: Right_thumb_3
+  - first:
+      4: 400170
+    second: Right_toe1
+  - first:
+      4: 400172
+    second: RPalm
+  - first:
+      4: 400174
+    second: RThigh
+  - first:
+      4: 400176
+    second: RUpperarm
+  - first:
+      4: 400178
+    second: Spine1
+  - first:
+      4: 400180
+    second: Spine2
+  - first:
+      4: 400182
+    second: Spine3
+  - first:
+      4: 400184
+    second: Spine4
+  - first:
+      4: 400186
+    second: tongue_Bone01
+  - first:
+      4: 400188
+    second: tongue_Bone02
+  - first:
+      4: 400190
+    second: tongue_Bone03
+  - first:
+      4: 400192
+    second: //RootNode
+  - first:
+      74: 7400000
+    second: walk_back_weapon_30f
+  - first:
+      95: 9500000
+    second: //RootNode
+  externalObjects: {}
+  materials:
+    materialImportMode: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: walk_back_weapon_30f
+      takeName: Take 001
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Reference
+        weight: 1
+      - path: Reference/ammo_bone01
+        weight: 1
+      - path: Reference/ammo_bone02
+        weight: 1
+      - path: Reference/Buckle_bone
+        weight: 1
+      - path: Reference/flashlight_bone
+        weight: 1
+      - path: Reference/flashlight_strap_bone
+        weight: 1
+      - path: Reference/gun_handle_bone
+        weight: 1
+      - path: Reference/gun_handle_bone/gun_clip_bone
+        weight: 1
+      - path: Reference/gun_handle_bone/gun_shaft_bone
+        weight: 1
+      - path: Reference/Handcuff_bone01
+        weight: 1
+      - path: Reference/Handcuff_bone02
+        weight: 1
+      - path: Reference/holster_bone
+        weight: 1
+      - path: Reference/LThigh
+        weight: 1
+      - path: Reference/LThigh/LCalf
+        weight: 1
+      - path: Reference/LThigh/LCalf/LFoot
+        weight: 1
+      - path: Reference/LThigh/LCalf/LFoot/Left_toe1
+        weight: 1
+      - path: Reference/radio_bone
+        weight: 1
+      - path: Reference/radio_case_bone
+        weight: 1
+      - path: Reference/RThigh
+        weight: 1
+      - path: Reference/RThigh/RCalf
+        weight: 1
+      - path: Reference/RThigh/RCalf/RFoot
+        weight: 1
+      - path: Reference/RThigh/RCalf/RFoot/Right_toe1
+        weight: 1
+      - path: Reference/Spine1
+        weight: 1
+      - path: Reference/Spine1/Spine2
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/LCollarbone
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/LCollarbone/LUpperarm
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/LCollarbone/LUpperarm/LForearm
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/LCollarbone/LUpperarm/LForearm/LPalm
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/LCollarbone/LUpperarm/LForearm/LPalm/Left_index_1
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/LCollarbone/LUpperarm/LForearm/LPalm/Left_index_1/Left_index_2
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/LCollarbone/LUpperarm/LForearm/LPalm/Left_index_1/Left_index_2/Left_index_3
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/LCollarbone/LUpperarm/LForearm/LPalm/Left_middle_1
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/LCollarbone/LUpperarm/LForearm/LPalm/Left_middle_1/Left_middle_2
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/LCollarbone/LUpperarm/LForearm/LPalm/Left_middle_1/Left_middle_2/Left_middle_3
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/LCollarbone/LUpperarm/LForearm/LPalm/Left_pinky_1
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/LCollarbone/LUpperarm/LForearm/LPalm/Left_pinky_1/Left_pinky_2
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/LCollarbone/LUpperarm/LForearm/LPalm/Left_pinky_1/Left_pinky_2/Left_pinky_3
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/LCollarbone/LUpperarm/LForearm/LPalm/Left_ring_1
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/LCollarbone/LUpperarm/LForearm/LPalm/Left_ring_1/Left_ring_2
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/LCollarbone/LUpperarm/LForearm/LPalm/Left_ring_1/Left_ring_2/Left_ring_3
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/LCollarbone/LUpperarm/LForearm/LPalm/Left_thumb_1
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/LCollarbone/LUpperarm/LForearm/LPalm/Left_thumb_1/Left_thumb_2
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/LCollarbone/LUpperarm/LForearm/LPalm/Left_thumb_1/Left_thumb_2/Left_thumb_3
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/Neck1
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/Neck1/Neck2
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/Neck1/Neck2/Head
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/Neck1/Neck2/Head/brow_L_bone01
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/Neck1/Neck2/Head/brow_L_bone02
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/Neck1/Neck2/Head/brow_L_bone03
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/Neck1/Neck2/Head/brow_R_bone01
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/Neck1/Neck2/Head/brow_R_bone02
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/Neck1/Neck2/Head/brow_R_bone03
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/Neck1/Neck2/Head/eye_L_bone
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/Neck1/Neck2/Head/eye_R_bone
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/Neck1/Neck2/Head/eyelid_L_bone
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/Neck1/Neck2/Head/eyelid_R_bone
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/Neck1/Neck2/Head/Hat_bone
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/Neck1/Neck2/Head/Lip_Top_Bone01
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/Neck1/Neck2/Head/Lip_Top_Bone02
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/Neck1/Neck2/Head/Lip_Top_Bone03
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/Neck1/Neck2/Head/Lip_Top_Bone04
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/Neck1/Neck2/Head/Lip_Top_Bone05
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/Neck1/Neck2/Head/mouth_Bottom_bone
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/Neck1/Neck2/Head/mouth_Bottom_bone/Lip_Bottom_Bone01
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/Neck1/Neck2/Head/mouth_Bottom_bone/Lip_Bottom_Bone02
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/Neck1/Neck2/Head/mouth_Bottom_bone/Lip_Bottom_Bone03
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/Neck1/Neck2/Head/mouth_Bottom_bone/Lip_Bottom_Bone04
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/Neck1/Neck2/Head/mouth_Bottom_bone/Lip_Bottom_Bone05
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/Neck1/Neck2/Head/mouth_Bottom_bone/tongue_Bone01
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/Neck1/Neck2/Head/mouth_Bottom_bone/tongue_Bone01/tongue_Bone02
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/Neck1/Neck2/Head/mouth_Bottom_bone/tongue_Bone01/tongue_Bone02/tongue_Bone03
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/Neck1/Neck2/Head/mouth_Top_bone
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/Neck1/Neck2/Head/nose_L_bone
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/Neck1/Neck2/Head/nose_R_bone
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/RCollarbone
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/RCollarbone/RUpperarm
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/RCollarbone/RUpperarm/RForearm
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/RCollarbone/RUpperarm/RForearm/RPalm
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/RCollarbone/RUpperarm/RForearm/RPalm/Right_index_1
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/RCollarbone/RUpperarm/RForearm/RPalm/Right_index_1/Right_index_2
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/RCollarbone/RUpperarm/RForearm/RPalm/Right_index_1/Right_index_2/Right_index_3
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/RCollarbone/RUpperarm/RForearm/RPalm/Right_middle_1
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/RCollarbone/RUpperarm/RForearm/RPalm/Right_middle_1/Right_middle_2
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/RCollarbone/RUpperarm/RForearm/RPalm/Right_middle_1/Right_middle_2/Right_middle_3
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/RCollarbone/RUpperarm/RForearm/RPalm/Right_pinky_1
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/RCollarbone/RUpperarm/RForearm/RPalm/Right_pinky_1/Right_pinky_2
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/RCollarbone/RUpperarm/RForearm/RPalm/Right_pinky_1/Right_pinky_2/Right_pinky_3
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/RCollarbone/RUpperarm/RForearm/RPalm/Right_ring_1
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/RCollarbone/RUpperarm/RForearm/RPalm/Right_ring_1/Right_ring_2
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/RCollarbone/RUpperarm/RForearm/RPalm/Right_ring_1/Right_ring_2/Right_ring_3
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/RCollarbone/RUpperarm/RForearm/RPalm/Right_thumb_1
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/RCollarbone/RUpperarm/RForearm/RPalm/Right_thumb_1/Right_thumb_2
+        weight: 1
+      - path: Reference/Spine1/Spine2/Spine3/Spine4/Ribcage/RCollarbone/RUpperarm/RForearm/RPalm/Right_thumb_1/Right_thumb_2/Right_thumb_3
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 2
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 0
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    fileIdsGeneration: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 4
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 2
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
