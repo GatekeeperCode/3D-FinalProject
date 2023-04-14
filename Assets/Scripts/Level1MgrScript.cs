@@ -14,7 +14,7 @@ public class Level1MgrScript : MonoBehaviour
     void Start()
     {
         Messenger.AddListener(Messages.LEVEL_TRANSFER, changeLevel);
-        _timer = GameObject.FindObjectOfType<TimerScript>();
+        _timer = FindObjectOfType<TimerScript>();
         StartCoroutine(SpawnEnemies());
         
     }

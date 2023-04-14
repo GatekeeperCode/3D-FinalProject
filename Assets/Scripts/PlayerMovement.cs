@@ -274,7 +274,7 @@ public class PlayerMovement : MonoBehaviour
             multiplier = 1f;
         }
         //Debug.Log("Mult1: " + multiplier);
-        Debug.Log("Mult2: " + multiplier2);
+        //Debug.Log("Mult2: " + multiplier2);
         _playerRbody.AddForce(trans.right * xVelocity * _speed * Time.fixedDeltaTime * multiplier);
         _playerRbody.AddForce(trans.forward * zVelocity * _speed * Time.deltaTime * multiplier * multiplier2);
     }
