@@ -13,7 +13,9 @@ public class TimerScript : MonoBehaviour
      * _elapsedTime is the amount of time that has passed
      * _timerRunning says if it is currently running or not;
      */
-    public Text _timerText;
+    
+    private bool _switchedScene;
+    private Text _timerText;
     private TimeSpan _timePlayed;
     public float _elapsedTime;
     private bool _timerRunning;
@@ -22,6 +24,8 @@ public class TimerScript : MonoBehaviour
     {
         //At the start of the first level, the timer begins running from an elapsed time of 0
         DontDestroyOnLoad(this.gameObject);
+        _switchedScene = false;
+        _timerText = GameObject.FindWithTag("TimerText").GetComponent<Text>();
         _timerText.text = "Time: 00:00";
         _timerRunning = true;
         _elapsedTime = 0;
@@ -31,11 +35,14 @@ public class TimerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         //If it isn't the first scene, destroy the timer inside of the current scene (If i recall, there has to be a timer in the scene but we want to
         //replace it with the timer that has the time already.
-        if(SceneManager.GetActiveScene().buildIndex > 1)
+        if (SceneManager.GetActiveScene().buildIndex > 1 && !_switchedScene)
         {
-            Destroy(GameObject.FindGameObjectWithTag("Timer"));
+            //Destroy(GameObject.FindGameObjectWithTag("Timer"));
+            _timerText = GameObject.FindWithTag("TimerText").GetComponent<Text>();
+            _switchedScene = true;
         }
     }
     /**
