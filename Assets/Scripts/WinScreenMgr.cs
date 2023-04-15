@@ -23,7 +23,7 @@ public class WinScreenMgr : MonoBehaviour
         {
             PlayerPrefs.SetFloat("Level2BestTime", PlayerPrefs.GetFloat("PlayerLevel2Time"));
         }
-        {        if (PlayerPrefs.GetFloat("BestTotalTime") > PlayerPrefs.GetFloat("PlayerTotalTime") || PlayerPrefs.GetFloat("BestTotalTime") == 0f)
+        if (PlayerPrefs.GetFloat("BestTotalTime") > PlayerPrefs.GetFloat("PlayerTotalTime") || PlayerPrefs.GetFloat("BestTotalTime") == 0f) {
 
             PlayerPrefs.SetFloat("BestTotalTime", PlayerPrefs.GetFloat("PlayerTotalTime"));
         }
