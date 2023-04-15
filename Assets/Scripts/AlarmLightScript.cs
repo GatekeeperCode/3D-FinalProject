@@ -25,19 +25,19 @@ public class AlarmLightScript : MonoBehaviour
 
         if (_timer._elapsedTime < 10)
         {
-            rotateIncrease = 3;
+            rotateIncrease = 2;
         }
         else if (_timer._elapsedTime < 20)
         {
-            rotateIncrease = 6;
+            rotateIncrease = 4;
         }
         else if (_timer._elapsedTime < 30)
         {
-            rotateIncrease = 9;
+            rotateIncrease = 6;
         }
         else
         {
-            rotateIncrease = 12;
+            rotateIncrease = 8;
         }
     }
 }

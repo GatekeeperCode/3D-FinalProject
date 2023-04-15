@@ -10,12 +10,13 @@ public class Level1MgrScript : MonoBehaviour
 
     [SerializeField]
     private List<Transform> _spawnPoints;
+    float spawnTime;
     // Start is called before the first frame update
     void Start()
     {
         Messenger.AddListener(Messages.LEVEL_TRANSFER, changeLevel);
         _timer = FindObjectOfType<TimerScript>();
-        StartCoroutine(SpawnEnemies());
+        spawnTime = 5f;
         
     }
 
@@ -26,29 +27,52 @@ public class Level1MgrScript : MonoBehaviour
         {
             Application.Quit();
         }
+        print(spawnTime);
+        if (spawnTime < 0) {
+            //StartCoroutine(SpawnEnemies());
+            int i = Random.Range(0, _spawnPoints.Count - 1);
+            Vector3 sourcePosition = _spawnPoints[i].transform.position;
+            GameObject chaseEnemy = Instantiate(_chaseEnemyPrefab, _spawnPoints[i]);
+            /* UnityEngine.AI.NavMeshHit closestHit;
+             if (UnityEngine.AI.NavMesh.SamplePosition(sourcePosition, out closestHit, 500, 1))
+             {
+                 chaseEnemy.transform.position = closestHit.position;
+                 chaseEnemy.AddComponent<UnityEngine.AI.NavMeshAgent>();
+                 //TODO
+             }
+             else
+             {
+                 Debug.Log("...");
+             }*/
+            spawnTime = 5f;
+        }
+        else
+        {
+            spawnTime -= Time.deltaTime;
+        }
     }
-
+    /*
     IEnumerator SpawnEnemies()
     {
         if (_timer._elapsedTime < 15)
         {
-            int i = Random.Range(0, _spawnPoints.Count - 1);
-            GameObject chaseEnemy = Instantiate(_chaseEnemyPrefab, _spawnPoints[i]);
-            yield return new WaitForSeconds(5);
+           
+
         }
         else if (_timer._elapsedTime < 20)
         {
             int i = Random.Range(0, _spawnPoints.Count - 1);
             GameObject chaseEnemy = Instantiate(_chaseEnemyPrefab, _spawnPoints[i]);
-            yield return new WaitForSeconds(4);
+            spawnTime = 4;
         }
         else if (_timer._elapsedTime < 25)
         {
             int i = Random.Range(0, _spawnPoints.Count - 1);
             GameObject chaseEnemy = Instantiate(_chaseEnemyPrefab, _spawnPoints[i]);
-            yield return new WaitForSeconds(3);
+            spawnTime = 3;
         }
-    }
+
+    }*/
 
     void changeLevel()
     {
