@@ -6,8 +6,8 @@ public class PlayerMovement : MonoBehaviour
 {
     public Level1MgrScript _managerScript;
     public bool isDead;
-
-    private float _maxSpeed = 8f;
+    private bool _crouchReady;
+    private float _maxSpeed;
     private float _crouchMax = 4f;
     private float originMax;
     private float _speed = 2000f;
@@ -63,10 +63,11 @@ public class PlayerMovement : MonoBehaviour
     {
         _managerScript = FindObjectOfType<Level1MgrScript>();
         isDead = false;
-
+        _maxSpeed = 8f;
         originMax = _maxSpeed;
         _isGrounded = true;
         _readyToJump = true;
+        _crouchReady = true;
         _isjumping = false;
         _isCrouched = false;
         _onLadder = false;
@@ -82,6 +83,15 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (_isCrouched)
+        {
+            _maxSpeed = 4f;
+        }
+        else
+        {
+            _maxSpeed = 8f;
+        }
+        Debug.Log(_crouchReady);
         if (!isDead)
         {
             InputDetection();
@@ -109,10 +119,18 @@ public class PlayerMovement : MonoBehaviour
     }
     private void InputDetection()
     {
-        _isCrouched = Input.GetKey(KeyCode.LeftControl);
+        _isCrouched = Input.GetKey(KeyCode.C);
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            StartCrouch();
+        }
+        if (Input.GetKeyUp(KeyCode.C))
+        {
+            EndCrouch();
+        }
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
-            // _isSliding = true;
+            _isSliding = true;
             StartSlide();
         }
 
@@ -179,6 +197,7 @@ public class PlayerMovement : MonoBehaviour
     {
         // _isCrouched = true;
         trans.localScale = new Vector3(trans.localScale.x, _slideYScale, trans.localScale.z);
+        _playerRbody.AddForce(Vector3.down * 5f, ForceMode.Impulse);
     }
     private void EndCrouch()
     {
@@ -188,29 +207,36 @@ public class PlayerMovement : MonoBehaviour
     private void StartSlide()
     {
         //Debug.Log("Magnitutde at Start: " + _playerRbody.velocity.magnitude);
-
-        trans.localScale = new Vector3(trans.localScale.x, _slideYScale, trans.localScale.z);
-        trans.position = new Vector3(trans.position.x, trans.position.y - 0.5f, trans.position.z);
-        if (_playerRbody.velocity.magnitude > 1f)
+        if (_crouchReady)
         {
-            if (_isGrounded)
+            trans.localScale = new Vector3(trans.localScale.x, _slideYScale, trans.localScale.z);
+            trans.position = new Vector3(trans.position.x, trans.position.y - 0.5f, trans.position.z);
+            if (_playerRbody.velocity.magnitude > 1f)
             {
-                _isSliding = true;
-                _playerRbody.AddForce(trans.forward * _slideforce);
-            }
+                if (_isGrounded)
+                {
+                    _crouchReady = false;
+                    _isSliding = true;
+                    _playerRbody.AddForce(trans.forward * _slideforce);
+                }
 
+            }
         }
+        
 
 
     }
     private void StopSlide()
     {
+        
         _isSliding = false;
         trans.localScale = new Vector3(trans.localScale.x, _startYScale, trans.localScale.z);
         trans.position = new Vector3(trans.position.x, trans.position.y + 0.5f, trans.position.z);
+        Invoke("CrouchReady", 1f);
     }
     private void Movement()
     {
+        Debug.Log(_maxSpeed);
         _playerRbody.AddForce(Vector3.down * Time.deltaTime * 10f);
         float magnitude = _playerRbody.velocity.magnitude;
         float moveAngle = Mathf.Atan2(_playerRbody.velocity.x, _playerRbody.velocity.z) * Mathf.Rad2Deg;
@@ -230,6 +256,7 @@ public class PlayerMovement : MonoBehaviour
         if (_isSliding)
         {
             _playerRbody.AddForce(_speed * Time.fixedDeltaTime * -_playerRbody.velocity.normalized * 0.01f);
+            return;
         }
 
         if (xVelocity > 0 && xMag > _maxSpeed)
@@ -254,11 +281,11 @@ public class PlayerMovement : MonoBehaviour
 
         float multiplier = 1f;
         float multiplier2 = 1f;
-        if (_isGrounded && _isSliding && _isCrouched)
+        if (_isGrounded && _isSliding)
         {
             multiplier2 = 0f;
         }
-        if (_isCrouched && !_isSliding)
+        if (_isCrouched)
         {
             multiplier2 = 0.5f;
             _maxSpeed = _crouchMax;
@@ -274,13 +301,19 @@ public class PlayerMovement : MonoBehaviour
             multiplier = 1f;
         }
         //Debug.Log("Mult1: " + multiplier);
-        //Debug.Log("Mult2: " + multiplier2);
+        Debug.Log("Mult2: " + multiplier2);
         _playerRbody.AddForce(trans.right * xVelocity * _speed * Time.fixedDeltaTime * multiplier);
         _playerRbody.AddForce(trans.forward * zVelocity * _speed * Time.deltaTime * multiplier * multiplier2);
     }
     private void JumpReady()
     {
         _readyToJump = true;
+    }
+
+    private void CrouchReady()
+    {
+        Debug.Log("CrouchReady");
+        _crouchReady = true;
     }
 
     private void OnTriggerEnter(Collider other)
