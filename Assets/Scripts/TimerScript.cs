@@ -27,9 +27,9 @@ public class TimerScript : MonoBehaviour
         _switchedScene = false;
         _timerText = GameObject.FindWithTag("TimerText").GetComponent<Text>();
         _timerText.text = "Time: 00:00";
-        _timerRunning = true;
+        _timerRunning = false;
         _elapsedTime = 0;
-        StartCoroutine(UpdateTimer());
+        Messenger.AddListener("StartLook", startTime);
     }
 
     // Update is called once per frame
@@ -73,5 +73,12 @@ public class TimerScript : MonoBehaviour
             _timerText.text = "Time: " + _timePlayed.ToString("mm':'ss");
             yield return null;
         }
+    }
+
+    void startTime()
+    {
+        Messenger.RemoveListener("StartLook", startTime);
+        _timerRunning = true;
+        StartCoroutine(UpdateTimer());
     }
 }

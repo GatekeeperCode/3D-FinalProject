@@ -14,10 +14,12 @@ public class Level1MgrScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        StartCoroutine(holdLook());
+
         Messenger.AddListener(Messages.LEVEL_TRANSFER, changeLevel);
         _timer = FindObjectOfType<TimerScript>();
         spawnTime = 5f;
-        
+
     }
 
     // Update is called once per frame
@@ -84,5 +86,11 @@ public class Level1MgrScript : MonoBehaviour
     public void playerDeath()
     {
         SceneManager.LoadScene("EndScene");
+    }
+
+    IEnumerator holdLook()
+    {
+        yield return new WaitForSeconds(8);
+        Messenger.Broadcast("StartLook");
     }
 }

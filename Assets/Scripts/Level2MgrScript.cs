@@ -8,6 +8,8 @@ public class Level2MgrScript : MonoBehaviour
     private TimerScript _timer;
     void Start()
     {
+        StartCoroutine(holdLook());
+
         Messenger.AddListener(Messages.LEVEL_TRANSFER, changeLevel);
         _timer = GameObject.FindObjectOfType<TimerScript>();
     }
@@ -28,5 +30,11 @@ public class Level2MgrScript : MonoBehaviour
         PlayerPrefs.SetFloat("PlayerTotalTime", _timer._elapsedTime);
         Messenger.RemoveListener(Messages.LEVEL_TRANSFER, changeLevel);
         SceneManager.LoadScene("WinScene");
+    }
+
+    IEnumerator holdLook()
+    {
+        yield return new WaitForSeconds(8);
+        Messenger.Broadcast("StartLook");
     }
 }
