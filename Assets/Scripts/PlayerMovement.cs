@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public Level1MgrScript _managerScript;
+    public AudioSource _playerAudio;
+    public AudioClip _landingSound;
     public bool isDead;
     private bool _crouchReady;
     private float _maxSpeed;
@@ -55,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
     public bool _isjumping;
     private bool _readyToJump;
     private bool _onLadder;
-
+    private bool _hitGroundSound;
     public LayerMask _ground;
     Transform trans;
     // Start is called before the first frame update
@@ -71,6 +73,7 @@ public class PlayerMovement : MonoBehaviour
         _isjumping = false;
         _isCrouched = false;
         _onLadder = false;
+        _hitGroundSound = true;
         _playerRbody = gameObject.GetComponent<Rigidbody>();
         _playerRbody.useGravity = true;
         trans = gameObject.transform;
@@ -104,9 +107,10 @@ public class PlayerMovement : MonoBehaviour
             if (_isGrounded)
             {
                 _isjumping = false;
+               
             }
 
-
+            
             /*if (_isCrouched)
             {
                 StartCrouch();
@@ -340,6 +344,19 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("PLAYING SOUND");
+        if(collision.gameObject.tag == "Untagged")
+        {
+            _hitGroundSound = true;
+            if(!_playerAudio.isPlaying && _hitGroundSound)
+            {
+                _playerAudio.PlayOneShot(_landingSound);
+                _hitGroundSound = false;
+            }
+        }
+    }
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;

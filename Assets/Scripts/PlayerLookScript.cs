@@ -9,7 +9,7 @@ public class PlayerLookScript : MonoBehaviour
     float verticalAngle = 0;
     public float dirMovement;
 
-    bool canLook = false;
+    bool canLook = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +19,7 @@ public class PlayerLookScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Messenger.AddListener("StartLook", canLookNow);
+        //Messenger.AddListener("StartLook", canLookNow);
 
         if(canLook)
         {
