@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
     private float _slideforce = 500f;
     //drag adjustment (basically how fast the player will stop)
     private float _groundDrag = 1f;
-
+    public GameObject _legs;
     /**
      * This is the scaling for when the player is standing up or crouching
      * */
@@ -110,7 +110,7 @@ public class PlayerMovement : MonoBehaviour
                
             }
 
-            
+            _legs.SetActive(_isSliding);
             /*if (_isCrouched)
             {
                 StartCrouch();
