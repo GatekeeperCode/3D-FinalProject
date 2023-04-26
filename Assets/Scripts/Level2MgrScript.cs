@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class Level2MgrScript : MonoBehaviour
 {
     private TimerScript _timer;
+    private bool paused;
+    public GameObject pauseMenu;
     void Start()
     {
         StartCoroutine(holdLook());
@@ -18,9 +20,16 @@ public class Level2MgrScript : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKey(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Application.Quit();
+            if (!paused)
+            {
+                pause();
+            }
+            else
+            {
+                unpause();
+            }
         }
     }
 
@@ -30,6 +39,22 @@ public class Level2MgrScript : MonoBehaviour
         PlayerPrefs.SetFloat("PlayerTotalTime", _timer._elapsedTime);
         Messenger.RemoveListener(Messages.LEVEL_TRANSFER, changeLevel);
         SceneManager.LoadScene("WinScene");
+    }
+
+    //Pauses game and opens pause menu
+    private void pause()
+    {
+        Time.timeScale = 0;
+        pauseMenu.SetActive(true);
+        paused = true;
+    }
+
+    //Unpauses game and closes pause menu
+    private void unpause()
+    {
+        Time.timeScale = 1.0f;
+        pauseMenu.SetActive(false);
+        paused = false;
     }
 
     IEnumerator holdLook()
