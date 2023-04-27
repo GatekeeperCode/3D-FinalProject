@@ -187,7 +187,7 @@ public class PlayerMovement : MonoBehaviour
         {
             _isjumping = true;
             _readyToJump = false;
-
+            _hitGroundSound = true;
             _playerRbody.AddForce(Vector2.up * _jumpForce * 1.2f);
             _playerRbody.AddForce(Vector3.up * _jumpForce * 0.5f);
             Invoke("JumpReady", 0.5f);
@@ -201,7 +201,11 @@ public class PlayerMovement : MonoBehaviour
     {
         // _isCrouched = true;
         trans.localScale = new Vector3(trans.localScale.x, _slideYScale, trans.localScale.z);
-        _playerRbody.AddForce(Vector3.down * 5f, ForceMode.Impulse);
+        if (_isGrounded)
+        {
+            _playerRbody.AddForce(Vector3.down * 5f, ForceMode.Impulse);
+        }
+       // _playerRbody.AddForce(Vector3.down * 5f, ForceMode.Impulse);
     }
     private void EndCrouch()
     {
@@ -213,8 +217,10 @@ public class PlayerMovement : MonoBehaviour
         //Debug.Log("Magnitutde at Start: " + _playerRbody.velocity.magnitude);
         if (_crouchReady)
         {
+            _playerRbody.AddForce(Vector3.down * 5f, ForceMode.Impulse);
             trans.localScale = new Vector3(trans.localScale.x, _slideYScale, trans.localScale.z);
-            trans.position = new Vector3(trans.position.x, trans.position.y - 0.5f, trans.position.z);
+            
+            //trans.position = new Vector3(trans.position.x, trans.position.y - 0.5f, trans.position.z);
             if (_playerRbody.velocity.magnitude > 1f)
             {
                 if (_isGrounded)
@@ -348,8 +354,8 @@ public class PlayerMovement : MonoBehaviour
     {
         Debug.Log("PLAYING SOUND");
         if(collision.gameObject.tag == "Untagged")
-        {
-            _hitGroundSound = true;
+        { 
+            //_hitGroundSound = true;
             if(!_playerAudio.isPlaying && _hitGroundSound)
             {
                 _playerAudio.PlayOneShot(_landingSound);
