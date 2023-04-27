@@ -201,7 +201,11 @@ public class PlayerMovement : MonoBehaviour
     {
         // _isCrouched = true;
         trans.localScale = new Vector3(trans.localScale.x, _slideYScale, trans.localScale.z);
-        _playerRbody.AddForce(Vector3.down * 5f, ForceMode.Impulse);
+        if (_isGrounded)
+        {
+            _playerRbody.AddForce(Vector3.down * 5f, ForceMode.Impulse);
+        }
+       // _playerRbody.AddForce(Vector3.down * 5f, ForceMode.Impulse);
     }
     private void EndCrouch()
     {

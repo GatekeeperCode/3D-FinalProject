@@ -34,7 +34,10 @@ public class PlayerLookScript : MonoBehaviour
             _head.localRotation = Quaternion.Euler(verticalAngle, 0, 0);
         }
     }
-
+    private void OnGUI()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
     void canLookNow()
     {
         Messenger.RemoveListener("StartLook", canLookNow);
