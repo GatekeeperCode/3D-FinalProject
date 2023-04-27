@@ -36,4 +36,9 @@ public class EndScreenManager : MonoBehaviour
     {
         SceneManager.LoadScene("Level 1 - Chase");
     }
+    private void OnGUI()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
 }

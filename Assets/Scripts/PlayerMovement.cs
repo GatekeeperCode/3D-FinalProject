@@ -187,7 +187,7 @@ public class PlayerMovement : MonoBehaviour
         {
             _isjumping = true;
             _readyToJump = false;
-
+            _hitGroundSound = true;
             _playerRbody.AddForce(Vector2.up * _jumpForce * 1.2f);
             _playerRbody.AddForce(Vector3.up * _jumpForce * 0.5f);
             Invoke("JumpReady", 0.5f);
@@ -354,8 +354,8 @@ public class PlayerMovement : MonoBehaviour
     {
         Debug.Log("PLAYING SOUND");
         if(collision.gameObject.tag == "Untagged")
-        {
-            _hitGroundSound = true;
+        { 
+            //_hitGroundSound = true;
             if(!_playerAudio.isPlaying && _hitGroundSound)
             {
                 _playerAudio.PlayOneShot(_landingSound);
