@@ -213,8 +213,10 @@ public class PlayerMovement : MonoBehaviour
         //Debug.Log("Magnitutde at Start: " + _playerRbody.velocity.magnitude);
         if (_crouchReady)
         {
+            _playerRbody.AddForce(Vector3.down * 5f, ForceMode.Impulse);
             trans.localScale = new Vector3(trans.localScale.x, _slideYScale, trans.localScale.z);
-            trans.position = new Vector3(trans.position.x, trans.position.y - 0.5f, trans.position.z);
+            
+            //trans.position = new Vector3(trans.position.x, trans.position.y - 0.5f, trans.position.z);
             if (_playerRbody.velocity.magnitude > 1f)
             {
                 if (_isGrounded)
