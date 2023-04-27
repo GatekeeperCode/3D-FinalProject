@@ -11,7 +11,7 @@ public class Level2MgrScript : MonoBehaviour
     void Start()
     {
         StartCoroutine(holdLook());
-
+        
         Messenger.AddListener(Messages.LEVEL_TRANSFER, changeLevel);
         _timer = GameObject.FindObjectOfType<TimerScript>();
     }
@@ -61,5 +61,7 @@ public class Level2MgrScript : MonoBehaviour
     {
         yield return new WaitForSeconds(8);
         Messenger.Broadcast("StartLook");
+        _timer.StartTimer();
+
     }
 }
