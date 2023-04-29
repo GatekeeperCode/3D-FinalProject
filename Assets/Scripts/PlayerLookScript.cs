@@ -8,8 +8,10 @@ public class PlayerLookScript : MonoBehaviour
     public Transform _head;
     float verticalAngle = 0;
     public float dirMovement;
-
     bool canLook = false;
+
+    [Range(1f, 5f)]
+    public float sensitivity = 3f;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,16 +25,19 @@ public class PlayerLookScript : MonoBehaviour
 
         if(canLook)
         {
-            float horizontalAngle = _head.eulerAngles.y + 5 * Input.GetAxis("Mouse X");
+            float horizontalAngle = _head.eulerAngles.y + sensitivity * Input.GetAxis("Mouse X");
             //Debug.Log(horizontalAngle);
             dirMovement = horizontalAngle;
-            verticalAngle -= 2 * Input.GetAxis("Mouse Y");
+            verticalAngle -= sensitivity * Input.GetAxis("Mouse Y");
             verticalAngle = Mathf.Clamp(verticalAngle, -60, 60);
             _transform.rotation = Quaternion.Euler(0, horizontalAngle, 0);
             _head.localRotation = Quaternion.Euler(verticalAngle, 0, 0);
         }
     }
-
+    private void OnGUI()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
     void canLookNow()
     {
         Messenger.RemoveListener("StartLook", canLookNow);
