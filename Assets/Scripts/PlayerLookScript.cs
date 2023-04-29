@@ -21,6 +21,17 @@ public class PlayerLookScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (canLook)
+            {
+                canLook = false;
+            }
+            else
+            {
+                canLook = true;
+            }
+        }
         Messenger.AddListener("StartLook", canLookNow);
 
         if(canLook)
@@ -34,9 +45,14 @@ public class PlayerLookScript : MonoBehaviour
             _head.localRotation = Quaternion.Euler(verticalAngle, 0, 0);
         }
     }
+    public void AdjustSensitrivity(float sens)
+    {
+        sensitivity = sens;
+    }
+
     private void OnGUI()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
     }
     void canLookNow()
     {

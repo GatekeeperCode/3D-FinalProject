@@ -96,6 +96,7 @@ public class Level1MgrScript : MonoBehaviour
     //Pauses game and opens pause menu
     private void pause()
     {
+        Cursor.lockState = CursorLockMode.None;
         Time.timeScale = 0;
         pauseMenu.SetActive(true);
         paused = true;
@@ -104,6 +105,7 @@ public class Level1MgrScript : MonoBehaviour
     //Unpauses game and closes pause menu
     private void unpause()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         Time.timeScale = 1.0f;
         pauseMenu.SetActive(false);
         paused = false;
