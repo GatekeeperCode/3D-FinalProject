@@ -38,7 +38,7 @@ public class Level2MgrScript : MonoBehaviour
         PlayerPrefs.SetFloat("PlayerLevel2Time", _timer._elapsedTime-PlayerPrefs.GetFloat("PlayerLevel1Time"));
         PlayerPrefs.SetFloat("PlayerTotalTime", _timer._elapsedTime);
         Messenger.RemoveListener(Messages.LEVEL_TRANSFER, changeLevel);
-        SceneManager.LoadScene("WinScene");
+        SceneManager.LoadScene(3);
     }
 
     //Pauses game and opens pause menu
