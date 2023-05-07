@@ -5,8 +5,10 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public Level1MgrScript _managerScript;
+
     public AudioSource _playerAudio;
     public AudioClip _landingSound;
+    public AudioClip _slideSound;
     public bool isDead;
     private bool _crouchReady;
     private float _maxSpeed;
@@ -51,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
 
     //Check values
     private bool _isSliding;
-    private bool _isCrouched;
+    public bool _isCrouched;
     private bool _isGrounded;
     private RaycastHit ray;
     public bool _isjumping;
@@ -94,16 +96,13 @@ public class PlayerMovement : MonoBehaviour
         {
             _maxSpeed = 8f;
         }
-        Debug.Log(_crouchReady);
+        
         if (!isDead)
         {
             InputDetection();
             //Raycast check to see if the player is on the ground (AT THE MOMENT CHECKING FOR GROUND LAYER)
-            //_isGrounded = Physics.Raycast(transform.position, Vector3.down, 1f, _ground);
             _isGrounded = Physics.SphereCast(trans.position, 0.52f, -trans.up, out ray, 0.52f, _ground);
-            //Debug.DrawSphere(trans.position, Vector3.down, Color.red);
-            //_isCrouched = Input.GetKey(KeyCode.C);
-            //Debug.Log(_isCrouched);
+           
             if (_isGrounded)
             {
                 _isjumping = false;
@@ -111,14 +110,7 @@ public class PlayerMovement : MonoBehaviour
             }
 
             _legs.SetActive(_isSliding);
-            /*if (_isCrouched)
-            {
-                StartCrouch();
-            }
-            else
-            {
-                EndCrouch();
-            }*/
+           
         }
     }
     private void InputDetection()
@@ -148,8 +140,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!isDead)
         {
-            //Debug.Log("_isSliding: " + _isSliding);
-            //Debug.Log("_readyToJump: " + _readyToJump);
+           
             Movement();
             //Direction of movement based on player rotation
             xVelocity = Input.GetAxisRaw("Horizontal");
@@ -167,11 +158,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 _playerRbody.velocity += Vector3.up * _fallMult * Physics.gravity.y * Time.fixedDeltaTime;
             }
-            //This is just a check for when the player is standing still so they they don't slide/jitter around
-            /* if (xVelocity == 0 && zVelocity == 0)
-             {
-                 _playerRbody.velocity = new Vector3(0, _playerRbody.velocity.y, 0);
-             }*/
+            
 
             //This is for ladder Climbing - Mike
             if (Input.GetKey(KeyCode.LeftShift) && _onLadder)
@@ -192,7 +179,7 @@ public class PlayerMovement : MonoBehaviour
             _playerRbody.AddForce(Vector3.up * _jumpForce * 0.5f);
             Invoke("JumpReady", 0.5f);
         }
-        //_playerRbody.velocity = new Vector3(_playerRbody.velocity.x, 0, _playerRbody.velocity.z);
+       
 
 
 
@@ -225,6 +212,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (_isGrounded)
                 {
+                    _playerAudio.PlayOneShot(_slideSound);
                     _crouchReady = false;
                     _isSliding = true;
                     _playerRbody.AddForce(trans.forward * _slideforce);

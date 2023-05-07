@@ -180,6 +180,7 @@ MonoBehaviour:
   _managerScript: {fileID: 0}
   _playerAudio: {fileID: 2818390332100085884}
   _landingSound: {fileID: 8300000, guid: 0b91afdd0e31fc640b02bc5e23d3243e, type: 3}
+  _slideSound: {fileID: 8300000, guid: faad9284018f5c84cb6cd280f5acf054, type: 3}
   isDead: 0
   _fallMult: 0.5
   _legs: {fileID: 6435414248577751234}

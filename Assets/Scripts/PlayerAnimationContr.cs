@@ -28,5 +28,6 @@ public class PlayerAnimationContr : MonoBehaviour
         _playerAnim.SetFloat("xVelocity", /*_rb.velocity.x*/ xMag);
         _playerAnim.SetFloat("zVelocity", /*_rb.velocity.z*/ zMag);
         _playerAnim.SetBool("isJumping", _playerMoveScript._isjumping);
+        _playerAnim.SetBool("isCrouched", _playerMoveScript._isCrouched);
     }
 }
