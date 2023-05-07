@@ -180,6 +180,7 @@ MonoBehaviour:
   _managerScript: {fileID: 0}
   _playerAudio: {fileID: 2818390332100085884}
   _landingSound: {fileID: 8300000, guid: 0b91afdd0e31fc640b02bc5e23d3243e, type: 3}
+  _slideSound: {fileID: 8300000, guid: faad9284018f5c84cb6cd280f5acf054, type: 3}
   isDead: 0
   _fallMult: 0.5
   _legs: {fileID: 6435414248577751234}
@@ -630,7 +631,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7650290481477372090}
-  m_Mesh: {fileID: -3592785139662684940, guid: c09b908a6a8c61d4d923d91c77d6d6b1, type: 3}
+  m_Mesh: {fileID: 151768629017166225, guid: f6f5b13c5779c9e40b0e187ab681fc79, type: 3}
 --- !u!23 &8154812592463636847
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -650,7 +651,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 6887287855757390300, guid: f6f5b13c5779c9e40b0e187ab681fc79, type: 3}
+  - {fileID: -876546973899608171, guid: f6f5b13c5779c9e40b0e187ab681fc79, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
