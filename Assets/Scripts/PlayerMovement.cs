@@ -5,6 +5,10 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public Level1MgrScript _managerScript;
+
+    public AudioSource _playerAudio;
+    public AudioClip _landingSound;
+    public AudioClip _slideSound;
     public bool isDead;
     private bool _crouchReady;
     private float _maxSpeed;
@@ -29,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
     private float _slideforce = 500f;
     //drag adjustment (basically how fast the player will stop)
     private float _groundDrag = 1f;
-
+    public GameObject _legs;
     /**
      * This is the scaling for when the player is standing up or crouching
      * */
@@ -49,13 +53,13 @@ public class PlayerMovement : MonoBehaviour
 
     //Check values
     private bool _isSliding;
-    private bool _isCrouched;
+    public bool _isCrouched;
     private bool _isGrounded;
     private RaycastHit ray;
     public bool _isjumping;
     private bool _readyToJump;
     private bool _onLadder;
-
+    private bool _hitGroundSound;
     public LayerMask _ground;
     Transform trans;
     // Start is called before the first frame update
@@ -71,6 +75,7 @@ public class PlayerMovement : MonoBehaviour
         _isjumping = false;
         _isCrouched = false;
         _onLadder = false;
+        _hitGroundSound = true;
         _playerRbody = gameObject.GetComponent<Rigidbody>();
         _playerRbody.useGravity = true;
         trans = gameObject.transform;
@@ -91,30 +96,21 @@ public class PlayerMovement : MonoBehaviour
         {
             _maxSpeed = 8f;
         }
-        Debug.Log(_crouchReady);
+        
         if (!isDead)
         {
             InputDetection();
             //Raycast check to see if the player is on the ground (AT THE MOMENT CHECKING FOR GROUND LAYER)
-            //_isGrounded = Physics.Raycast(transform.position, Vector3.down, 1f, _ground);
             _isGrounded = Physics.SphereCast(trans.position, 0.52f, -trans.up, out ray, 0.52f, _ground);
-            //Debug.DrawSphere(trans.position, Vector3.down, Color.red);
-            //_isCrouched = Input.GetKey(KeyCode.C);
-            //Debug.Log(_isCrouched);
+           
             if (_isGrounded)
             {
                 _isjumping = false;
+               
             }
 
-
-            /*if (_isCrouched)
-            {
-                StartCrouch();
-            }
-            else
-            {
-                EndCrouch();
-            }*/
+            _legs.SetActive(_isSliding);
+           
         }
     }
     private void InputDetection()
@@ -144,8 +140,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!isDead)
         {
-            //Debug.Log("_isSliding: " + _isSliding);
-            //Debug.Log("_readyToJump: " + _readyToJump);
+           
             Movement();
             //Direction of movement based on player rotation
             xVelocity = Input.GetAxisRaw("Horizontal");
@@ -163,11 +158,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 _playerRbody.velocity += Vector3.up * _fallMult * Physics.gravity.y * Time.fixedDeltaTime;
             }
-            //This is just a check for when the player is standing still so they they don't slide/jitter around
-            /* if (xVelocity == 0 && zVelocity == 0)
-             {
-                 _playerRbody.velocity = new Vector3(0, _playerRbody.velocity.y, 0);
-             }*/
+            
 
             //This is for ladder Climbing - Mike
             if (Input.GetKey(KeyCode.LeftShift) && _onLadder)
@@ -183,12 +174,12 @@ public class PlayerMovement : MonoBehaviour
         {
             _isjumping = true;
             _readyToJump = false;
-
+            _hitGroundSound = true;
             _playerRbody.AddForce(Vector2.up * _jumpForce * 1.2f);
             _playerRbody.AddForce(Vector3.up * _jumpForce * 0.5f);
             Invoke("JumpReady", 0.5f);
         }
-        //_playerRbody.velocity = new Vector3(_playerRbody.velocity.x, 0, _playerRbody.velocity.z);
+       
 
 
 
@@ -197,7 +188,11 @@ public class PlayerMovement : MonoBehaviour
     {
         // _isCrouched = true;
         trans.localScale = new Vector3(trans.localScale.x, _slideYScale, trans.localScale.z);
-        _playerRbody.AddForce(Vector3.down * 5f, ForceMode.Impulse);
+        if (_isGrounded)
+        {
+            _playerRbody.AddForce(Vector3.down * 5f, ForceMode.Impulse);
+        }
+       // _playerRbody.AddForce(Vector3.down * 5f, ForceMode.Impulse);
     }
     private void EndCrouch()
     {
@@ -209,12 +204,15 @@ public class PlayerMovement : MonoBehaviour
         //Debug.Log("Magnitutde at Start: " + _playerRbody.velocity.magnitude);
         if (_crouchReady)
         {
+            _playerRbody.AddForce(Vector3.down * 5f, ForceMode.Impulse);
             trans.localScale = new Vector3(trans.localScale.x, _slideYScale, trans.localScale.z);
-            trans.position = new Vector3(trans.position.x, trans.position.y - 0.5f, trans.position.z);
+            
+            //trans.position = new Vector3(trans.position.x, trans.position.y - 0.5f, trans.position.z);
             if (_playerRbody.velocity.magnitude > 1f)
             {
                 if (_isGrounded)
                 {
+                    _playerAudio.PlayOneShot(_slideSound);
                     _crouchReady = false;
                     _isSliding = true;
                     _playerRbody.AddForce(trans.forward * _slideforce);
@@ -340,6 +338,19 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("PLAYING SOUND");
+        if(collision.gameObject.tag == "Untagged")
+        { 
+            //_hitGroundSound = true;
+            if(!_playerAudio.isPlaying && _hitGroundSound)
+            {
+                _playerAudio.PlayOneShot(_landingSound);
+                _hitGroundSound = false;
+            }
+        }
+    }
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;

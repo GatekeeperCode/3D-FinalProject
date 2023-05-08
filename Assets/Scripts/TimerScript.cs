@@ -47,6 +47,7 @@ public class TimerScript : MonoBehaviour
             //Destroy(GameObject.FindGameObjectWithTag("Timer"));
             _timerText = GameObject.FindWithTag("TimerText").GetComponent<Text>();
             _switchedScene = true;
+            
         }
     }
     /**
@@ -55,6 +56,7 @@ public class TimerScript : MonoBehaviour
     public void StartTimer()
     {
         _timerRunning = true;
+        StartCoroutine(UpdateTimer());
     }
     public void StopTimer()
     {

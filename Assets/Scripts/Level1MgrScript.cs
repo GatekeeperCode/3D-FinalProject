@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class Level1MgrScript : MonoBehaviour
 {
     private TimerScript _timer;
+    private bool paused;
+    public GameObject pauseMenu;
     public GameObject _chaseEnemyPrefab;
 
     [SerializeField]
@@ -25,9 +27,16 @@ public class Level1MgrScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Application.Quit();
+            if (!paused)
+            {
+                pause();
+            }
+            else
+            {
+                unpause();
+            }
         }
         print(spawnTime);
         if (spawnTime < 0) {
@@ -80,7 +89,26 @@ public class Level1MgrScript : MonoBehaviour
     {
         PlayerPrefs.SetFloat("PlayerLevel1Time", _timer._elapsedTime);
         Messenger.RemoveListener(Messages.LEVEL_TRANSFER, changeLevel);
+        _timer.StopTimer();
         SceneManager.LoadScene(2);
+    }
+
+    //Pauses game and opens pause menu
+    private void pause()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Time.timeScale = 0;
+        pauseMenu.SetActive(true);
+        paused = true;
+    }
+
+    //Unpauses game and closes pause menu
+    private void unpause()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Time.timeScale = 1.0f;
+        pauseMenu.SetActive(false);
+        paused = false;
     }
 
     public void playerDeath()
