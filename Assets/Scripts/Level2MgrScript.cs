@@ -20,17 +20,7 @@ public class Level2MgrScript : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (!paused)
-            {
-                pause();
-            }
-            else
-            {
-                unpause();
-            }
-        }
+        
     }
 
     void changeLevel()
@@ -61,6 +51,7 @@ public class Level2MgrScript : MonoBehaviour
     {
         yield return new WaitForSeconds(8);
         Messenger.Broadcast("StartLook");
+        Messenger.Broadcast("StartMove");
         _timer.StartTimer();
 
     }

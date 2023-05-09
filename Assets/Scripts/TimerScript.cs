@@ -42,11 +42,11 @@ public class TimerScript : MonoBehaviour
         }
         //If it isn't the first scene, destroy the timer inside of the current scene (If i recall, there has to be a timer in the scene but we want to
         //replace it with the timer that has the time already.
-        if (SceneManager.GetActiveScene().buildIndex > 1 && !_switchedScene)
+        if (SceneManager.GetActiveScene().buildIndex > 1)
         {
             //Destroy(GameObject.FindGameObjectWithTag("Timer"));
             _timerText = GameObject.FindWithTag("TimerText").GetComponent<Text>();
-            _switchedScene = true;
+            ///_switchedScene = true;
             
         }
     }

@@ -8,30 +8,35 @@ public class PlayerLookScript : MonoBehaviour
     public Transform _head;
     float verticalAngle = 0;
     public float dirMovement;
-    bool canLook = false;
-
+    private bool canLook = false;
+    private bool _lookLock = true;
+    private UIManager _levelUI;
     [Range(1f, 5f)]
     public float sensitivity = 3f;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
         _transform = transform;
-    }
+        _levelUI = GameObject.FindObjectOfType<UIManager>();
 
+    }
+    
     // Update is called once per frame
     void Update()
     {
+       
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (canLook)
+            if (!_levelUI._isPaused && !_lookLock)
             {
-                canLook = false;
+                canLook = true;
             }
             else
             {
-                canLook = true;
+                canLook = false;
             }
         }
         Messenger.AddListener("StartLook", canLookNow);
@@ -60,5 +65,6 @@ public class PlayerLookScript : MonoBehaviour
     {
         Messenger.RemoveListener("StartLook", canLookNow);
         canLook = true;
+        _lookLock = false;
     }
 }
