@@ -9,6 +9,9 @@ TagManager:
   - Timer
   - Enemy
   - TimerText
+  - LevelManager
+  - MainUI
+  - PauseMenu
   layers:
   - Default
   - TransparentFX

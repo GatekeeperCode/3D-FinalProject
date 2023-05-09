@@ -7,8 +7,9 @@ using UnityEngine.UI;
 public class Level1MgrScript : MonoBehaviour
 {
     private TimerScript _timer;
-    private bool paused;
+    public bool paused;
     public GameObject pauseMenu;
+    public GameObject mainMenu;
     public GameObject _chaseEnemyPrefab;
     public Text _sensText;
 
@@ -34,14 +35,14 @@ public class Level1MgrScript : MonoBehaviour
         {
             if (!paused)
             {
-                pause();
+               
             }
             else
             {
-                unpause();
+               
             }
         }
-        print(spawnTime);
+       // print(spawnTime);
         if (spawnTime < 0) {
             //StartCoroutine(SpawnEnemies());
             int i = Random.Range(0, _spawnPoints.Count - 1);
@@ -96,29 +97,13 @@ public class Level1MgrScript : MonoBehaviour
         SceneManager.LoadScene(2);
     }
 
-    //Pauses game and opens pause menu
-    private void pause()
-    {
-        Cursor.lockState = CursorLockMode.None;
-        Time.timeScale = 0;
-        pauseMenu.SetActive(true);
-        paused = true;
-    }
-
-    //Unpauses game and closes pause menu
-    private void unpause()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-        Time.timeScale = 1.0f;
-        pauseMenu.SetActive(false);
-        paused = false;
-    }
+    
 
     public void playerDeath()
     {
         SceneManager.LoadScene("EndScene");
     }
-
+    
     IEnumerator holdLook()
     {
         yield return new WaitForSeconds(8);

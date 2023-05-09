@@ -3805,7 +3805,7 @@ GameObject:
   - component: {fileID: 229999142}
   m_Layer: 5
   m_Name: TimerPanel
-  m_TagString: Untagged
+  m_TagString: MainUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4905,7 +4905,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -7266,7 +7266,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 871545022921449909, guid: c97b19a5c0fa6d84bb9682fd82b49d38, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.101
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7157512067323306155, guid: c97b19a5c0fa6d84bb9682fd82b49d38, type: 3}
       propertyPath: m_RootOrder
@@ -19038,6 +19038,7 @@ GameObject:
   - component: {fileID: 980246848}
   - component: {fileID: 980246847}
   - component: {fileID: 980246846}
+  - component: {fileID: 980246849}
   m_Layer: 0
   m_Name: Level2Mgr
   m_TagString: Untagged
@@ -19168,6 +19169,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &980246849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980246845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04d6779cb5a7b3e47bd4fec9924c6366, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isPaused: 0
+  _pauseUI: {fileID: 0}
+  _mainGameUI: {fileID: 0}
 --- !u!4 &980331833 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 964859950290829794, guid: 3ee1b908783c850478577605b0091cec, type: 3}
@@ -23130,7 +23146,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -25586,11 +25602,11 @@ GameObject:
   - component: {fileID: 1324847209}
   m_Layer: 5
   m_Name: PauseMenu
-  m_TagString: Untagged
+  m_TagString: PauseMenu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1324847208
 RectTransform:
   m_ObjectHideFlags: 0

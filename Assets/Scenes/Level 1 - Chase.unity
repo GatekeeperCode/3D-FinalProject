@@ -1791,7 +1791,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -6207,7 +6207,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -9811,9 +9811,10 @@ GameObject:
   - component: {fileID: 221914030}
   - component: {fileID: 221914029}
   - component: {fileID: 221914031}
+  - component: {fileID: 221914032}
   m_Layer: 0
   m_Name: Level1Mgr
-  m_TagString: Untagged
+  m_TagString: LevelManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9830,7 +9831,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71470c49991265a4c80c5c5a6f3eaedf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paused: 0
   pauseMenu: {fileID: 1169204005}
+  mainMenu: {fileID: 664134546}
   _chaseEnemyPrefab: {fileID: 6563188152861102237, guid: a3979dae28cfca44d8c1a3ddba8dc767, type: 3}
   _sensText: {fileID: 450848830}
   _spawnPoints:
@@ -9949,6 +9952,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &221914032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 221914028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04d6779cb5a7b3e47bd4fec9924c6366, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isPaused: 0
+  _pauseUI: {fileID: 0}
+  _mainGameUI: {fileID: 0}
 --- !u!1001 &224289256
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28280,7 +28298,7 @@ GameObject:
   - component: {fileID: 664134548}
   m_Layer: 5
   m_Name: TimerPanel
-  m_TagString: Untagged
+  m_TagString: MainUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51021,11 +51039,11 @@ GameObject:
   - component: {fileID: 1169204007}
   m_Layer: 5
   m_Name: PauseMenu
-  m_TagString: Untagged
+  m_TagString: PauseMenu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1169204006
 RectTransform:
   m_ObjectHideFlags: 0
