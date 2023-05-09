@@ -49,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
     //_moveDir is uses for player direction 
     private Vector3 _dirMove;
     Rigidbody _playerRbody;
-
+    private bool _canMove;
 
     //Check values
     private bool _isSliding;
@@ -82,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
         _playerRbody.drag = _groundDrag;
         _startYScale = trans.localScale.y;
         _slideYScale = _startYScale / 2;
-
+        _canMove = false;
     }
 
     // Update is called once per frame
@@ -97,7 +97,7 @@ public class PlayerMovement : MonoBehaviour
             _maxSpeed = 8f;
         }
         
-        if (!isDead)
+        if (!isDead && _canMove)
         {
             InputDetection();
             //Raycast check to see if the player is on the ground (AT THE MOMENT CHECKING FOR GROUND LAYER)
@@ -138,7 +138,8 @@ public class PlayerMovement : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (!isDead)
+        Messenger.AddListener("StartMove", canMoveNow);
+        if (!isDead && _canMove)
         {
            
             Movement();
@@ -355,6 +356,12 @@ public class PlayerMovement : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(gameObject.transform.position-gameObject.transform.up*0.52f, 0.52f);
+    }
+
+    void canMoveNow()
+    {
+        Messenger.RemoveListener("StartMove", canMoveNow);
+        _canMove = true;
     }
 
 }

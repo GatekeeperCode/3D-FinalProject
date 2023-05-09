@@ -12,6 +12,8 @@ public class PlayerLookScript : MonoBehaviour
 
     [Range(1f, 5f)]
     public float sensitivity = 3f;
+
+
     // Start is called before the first frame update
     void Start()
     {
