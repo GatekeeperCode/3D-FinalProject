@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Level1MgrScript : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class Level1MgrScript : MonoBehaviour
     private bool paused;
     public GameObject pauseMenu;
     public GameObject _chaseEnemyPrefab;
+    public Text _sensText;
 
     [SerializeField]
     private List<Transform> _spawnPoints;
@@ -27,6 +29,7 @@ public class Level1MgrScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        _sensText.text = FindObjectOfType<PlayerLookScript>().sensitivity.ToString();
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (!paused)
