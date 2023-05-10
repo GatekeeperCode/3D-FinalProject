@@ -21,7 +21,7 @@ public class EnemyStealthScript : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         agent.SetDestination(_waypoints[0].position);
-
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
@@ -45,8 +45,6 @@ public class EnemyStealthScript : MonoBehaviour
     public void Alert()
     {
         alert = true;
-        //print("hi");
-
     }
 
     public void OnTriggerEnter(Collider other)

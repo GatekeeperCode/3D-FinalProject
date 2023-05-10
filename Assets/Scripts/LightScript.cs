@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LightScript : MonoBehaviour
 {
-    float degreesPerSecond = 40;
+    float degreesPerSecond = 60;
     public GameObject target;
 
     // Start is called before the first frame update
