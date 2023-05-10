@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7882100788985896018}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 7, z: -5.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7882100789860680490}
@@ -77,7 +77,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 0.92518747, b: 0, a: 1}
   m_Intensity: 1000
-  m_Range: 20
+  m_Range: 25
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -147,9 +147,9 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7882100789860680488}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 3
-  m_Height: 16
+  m_Radius: 3.5
+  m_Height: 20
   m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 8}
+  m_Center: {x: 0, y: 0, z: 9}
