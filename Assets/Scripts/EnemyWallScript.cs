@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyStealthScript : MonoBehaviour
+public class EnemyWallScript : MonoBehaviour
 {
     [SerializeField]
     private List<Transform> _waypoints;
@@ -28,24 +28,8 @@ public class EnemyStealthScript : MonoBehaviour
     void Update()
     {
 
-        Vector3 targetDir = player.transform.position - transform.position;
-        float angle = Vector3.Angle(targetDir, transform.forward);
-
-        if ((seePlayer() && angle < 45.0f) || alert)
-        {
-            agent.SetDestination(player.transform.position);
-        }
     }
 
-    private void OnEnable()
-    {
-        Messenger.AddListener(Messages.LIGHT_ALERT, Alert);
-    }
-
-    public void Alert()
-    {
-        alert = true;
-    }
 
     public void OnTriggerEnter(Collider other)
     {
@@ -53,7 +37,6 @@ public class EnemyStealthScript : MonoBehaviour
         if (other.gameObject.tag == "waypoint")
         {
             _target++;
-            print(_target);
             if (_target == _waypoints.Count)
             {
                 _waypoints.Reverse();
@@ -63,19 +46,6 @@ public class EnemyStealthScript : MonoBehaviour
         }
     }
 
-
-    public bool seePlayer()
-    {
-        Vector3 rayDirection = player.transform.position - transform.position;
-        if (Physics.Raycast(transform.position, rayDirection, 20f, _player))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
 }
 
 
