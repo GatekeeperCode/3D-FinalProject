@@ -59,5 +59,6 @@ public class Level3MgrScript : MonoBehaviour
     {
         yield return new WaitForSeconds(8);
         Messenger.Broadcast("StartLook");
+        Messenger.Broadcast("StartMove");
     }
 }
