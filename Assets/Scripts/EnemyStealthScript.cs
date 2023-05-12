@@ -51,9 +51,9 @@ public class EnemyStealthScript : MonoBehaviour
     {
 
         if (other.gameObject.tag == "waypoint")
-
         {
             _target++;
+            print(_target);
             if (_target == _waypoints.Count)
             {
                 _waypoints.Reverse();

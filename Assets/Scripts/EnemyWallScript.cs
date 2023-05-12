@@ -35,7 +35,6 @@ public class EnemyWallScript : MonoBehaviour
     {
 
         if (other.gameObject.tag == "waypoint")
-
         {
             _target++;
             if (_target == _waypoints.Count)
