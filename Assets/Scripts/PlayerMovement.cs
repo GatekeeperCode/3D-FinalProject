@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
 
 
     //Check values
-    private bool _isSliding;
+    public bool _isSliding;
     public bool _isCrouched;
     private bool _isGrounded;
     private RaycastHit ray;
