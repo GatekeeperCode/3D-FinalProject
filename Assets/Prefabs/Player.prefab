@@ -182,8 +182,8 @@ MonoBehaviour:
   _landingSound: {fileID: 8300000, guid: 0b91afdd0e31fc640b02bc5e23d3243e, type: 3}
   _slideSound: {fileID: 8300000, guid: faad9284018f5c84cb6cd280f5acf054, type: 3}
   isDead: 0
-  _fallMult: 0.5
   _legs: {fileID: 6435414248577751234}
+  _fallMult: 0.5
   _airMult: 0.4
   _isCrouched: 0
   _isjumping: 0
@@ -619,7 +619,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7650290481477372090}
   m_LocalRotation: {x: 0.7064338, y: 0.03084357, z: -0.03084357, w: 0.7064338}
-  m_LocalPosition: {x: -0.5, y: 0.25, z: -0.16528387}
+  m_LocalPosition: {x: -0.5058359, y: 0.28134027, z: -0.16528386}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7157512067323306155}
@@ -787,23 +787,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f689a03fac3bc3b429db5f0da9f98e68, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.6426699
+      value: 0.6830127
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f689a03fac3bc3b429db5f0da9f98e68, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.6426699
+      value: -0.6830127
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f689a03fac3bc3b429db5f0da9f98e68, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.29491588
+      value: -0.1830127
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f689a03fac3bc3b429db5f0da9f98e68, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.29491588
+      value: 0.1830127
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f689a03fac3bc3b429db5f0da9f98e68, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -40.7
+      value: -60
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f689a03fac3bc3b429db5f0da9f98e68, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y

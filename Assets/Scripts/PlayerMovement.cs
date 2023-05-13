@@ -16,12 +16,8 @@ public class PlayerMovement : MonoBehaviour
     private float originMax;
     private float _speed = 2000f;
     private float _thresh = 0.01f;
-    // OLD Movement adjusters 
-    //private float _speedMult = 10f;
-    //private float _walkSpeed = 4f;
-    //private float _moveSpeed = 6f;
-    //private float acceleration = 5f;
 
+    public GameObject _legs;
     //if the player reaches a certain point, this is used to make them fall faster. Jump force is how high the player will jump
     /**
      * _fallMult is the multiplier for when the player is falling back down (reaches the top and starts falling, how fast will they fall)
@@ -33,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
     private float _slideforce = 500f;
     //drag adjustment (basically how fast the player will stop)
     private float _groundDrag = 1f;
-    public GameObject _legs;
+  
     /**
      * This is the scaling for when the player is standing up or crouching
      * */
@@ -110,7 +106,12 @@ public class PlayerMovement : MonoBehaviour
             }
 
             _legs.SetActive(_isSliding);
-           
+            if (_isSliding)
+            {
+                _legs.gameObject.transform.localScale = new Vector3(1.4f, 1.1f, 1.7f);
+            }
+
+
         }
     }
     private void InputDetection()
