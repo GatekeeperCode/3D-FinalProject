@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7882100788985896013}
   m_Layer: 0
-  m_Name: TowerSpotlight
+  m_Name: Spotlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

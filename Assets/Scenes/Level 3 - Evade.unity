@@ -20961,7 +20961,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7882100788985896018, guid: 95b1b334075a6f8439e733f06cf7919f, type: 3}
       propertyPath: m_Name
-      value: TowerSpotlight
+      value: Spotlight
       objectReference: {fileID: 0}
     - target: {fileID: 7882100789860680485, guid: 95b1b334075a6f8439e733f06cf7919f, type: 3}
       propertyPath: degreesPerSecond
