@@ -24,11 +24,11 @@ public class Level3MgrScript : MonoBehaviour
         {
             if (!paused)
             {
-                pause();
+                //pause();
             }
             else
             {
-                unpause();
+               // unpause();
             }
         }
     }

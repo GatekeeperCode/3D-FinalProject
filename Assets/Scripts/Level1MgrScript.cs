@@ -30,7 +30,7 @@ public class Level1MgrScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _sensText.text = FindObjectOfType<PlayerLookScript>().sensitivity.ToString();
+        //_sensText.text = FindObjectOfType<PlayerLookScript>().sensitivity.ToString();
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (!paused)
