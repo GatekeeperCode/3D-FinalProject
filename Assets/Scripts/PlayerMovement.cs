@@ -7,8 +7,10 @@ public class PlayerMovement : MonoBehaviour
     public Level1MgrScript _managerScript;
 
     public AudioSource _playerAudio;
+    public AudioSource _walkingStep;
     public AudioClip _landingSound;
     public AudioClip _slideSound;
+    public AudioClip _walkingEffect;
     public bool isDead;
     private bool _crouchReady;
     private float _maxSpeed;
@@ -147,6 +149,15 @@ public class PlayerMovement : MonoBehaviour
             //Direction of movement based on player rotation
             xVelocity = Input.GetAxisRaw("Horizontal");
             zVelocity = Input.GetAxisRaw("Vertical");
+            if ((xVelocity != 0 || zVelocity != 0))
+            {
+                _walkingStep.enabled = true;
+            }
+            else
+            {
+                _walkingStep.enabled = false;
+            }
+            
             _dirMove = trans.forward * zVelocity + trans.right * xVelocity;
 
             //Jump Check
@@ -236,6 +247,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Movement()
     {
+        
         Debug.Log(_maxSpeed);
         _playerRbody.AddForce(Vector3.down * Time.deltaTime * 10f);
         float magnitude = _playerRbody.velocity.magnitude;
