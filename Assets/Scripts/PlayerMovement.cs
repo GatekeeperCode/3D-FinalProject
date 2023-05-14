@@ -63,6 +63,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _walkingStep.enabled = false;
         _managerScript = FindObjectOfType<DeathMgr>();
         isDead = false;
         _maxSpeed = 8f;
@@ -149,7 +150,8 @@ public class PlayerMovement : MonoBehaviour
             //Direction of movement based on player rotation
             xVelocity = Input.GetAxisRaw("Horizontal");
             zVelocity = Input.GetAxisRaw("Vertical");
-            if ((xVelocity != 0 || zVelocity != 0))
+            Debug.Log("Soundcheck: " + ((xVelocity > 0 || zVelocity > 0) && _isGrounded && !_isSliding));
+            if ((xVelocity > 0 || zVelocity > 0) && _isGrounded && !_isSliding)
             {
                 _walkingStep.enabled = true;
             }

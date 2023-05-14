@@ -25437,6 +25437,14 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2540155741278780537, guid: c97b19a5c0fa6d84bb9682fd82b49d38, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2540155741278780537, guid: c97b19a5c0fa6d84bb9682fd82b49d38, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2546993616758299673, guid: c97b19a5c0fa6d84bb9682fd82b49d38, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
@@ -50138,7 +50146,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 4
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
