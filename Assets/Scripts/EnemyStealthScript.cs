@@ -16,6 +16,9 @@ public class EnemyStealthScript : MonoBehaviour
     public bool alert = false;
     Animator animator;
 
+    public AudioSource _source;
+    public AudioClip _hey;
+
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +41,10 @@ public class EnemyStealthScript : MonoBehaviour
             animator.SetBool("animAlert", true);
             agent.SetDestination(player.transform.position);
             agent.speed = 10;
+            if (!alert) {
+                // if only one guard sees the player
+                _source.PlayOneShot(_hey);
+            }
         }
     }
 
