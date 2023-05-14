@@ -21,7 +21,7 @@ public class PlayerLookScript : MonoBehaviour
     {
         _transform = transform;
         _levelUI = GameObject.FindObjectOfType<UIManager>();
-
+        _levelUI._sensitvitySlider.value = sensitivity;
     }
     
     // Update is called once per frame

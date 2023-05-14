@@ -8,6 +8,8 @@ public class UIManager : MonoBehaviour
     public bool _isPaused;
     public GameObject _pauseUI;
     public GameObject _mainGameUI;
+    public Slider _sensitvitySlider;
+    public Text _sensText;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +22,7 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        _sensText.text = FindObjectOfType<PlayerLookScript>().sensitivity.ToString();
         /*if(_pauseUI == null && _mainGameUI == null)
         {
             _pauseUI = GameObject.FindGameObjectWithTag("PauseMenu");
