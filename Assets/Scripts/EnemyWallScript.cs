@@ -15,6 +15,7 @@ public class EnemyWallScript : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         agent.SetDestination(_waypoints[0].position);
+        print("ASDFLSKLDFJL;KSLJK;FJK" + _waypoints.Count);
     }
 
     // Update is called once per frame

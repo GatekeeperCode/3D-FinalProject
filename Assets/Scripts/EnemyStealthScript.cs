@@ -37,7 +37,7 @@ public class EnemyStealthScript : MonoBehaviour
         {
             animator.SetBool("animAlert", true);
             agent.SetDestination(player.transform.position);
-            agent.speed = 9;
+            agent.speed = 10;
         }
     }
 
@@ -57,7 +57,6 @@ public class EnemyStealthScript : MonoBehaviour
         if (other.gameObject.tag == "waypoint")
         {
             _target++;
-            print(_target);
             if (_target == _waypoints.Count)
             {
                 _waypoints.Reverse();
