@@ -54,8 +54,12 @@ public class Level3MgrScript : MonoBehaviour
         pauseMenu.SetActive(false);
         paused = false;
     }
+    public void playerDeath()
+    {
+        SceneManager.LoadScene("EndScene");
+    }
 
-        IEnumerator holdLook()
+    IEnumerator holdLook()
     {
         yield return new WaitForSeconds(8);
         Messenger.Broadcast("StartLook");
