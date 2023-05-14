@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public Level1MgrScript _managerScript;
+    public DeathMgr _managerScript;
 
     public AudioSource _playerAudio;
     public AudioSource _walkingStep;
@@ -63,7 +63,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _managerScript = FindObjectOfType<Level1MgrScript>();
+        _managerScript = FindObjectOfType<DeathMgr>();
         isDead = false;
         _maxSpeed = 8f;
         originMax = _maxSpeed;

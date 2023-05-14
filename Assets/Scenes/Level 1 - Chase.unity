@@ -9887,6 +9887,7 @@ GameObject:
   - component: {fileID: 221914029}
   - component: {fileID: 221914031}
   - component: {fileID: 221914032}
+  - component: {fileID: 221914033}
   m_Layer: 0
   m_Name: Level1Mgr
   m_TagString: LevelManager
@@ -10044,6 +10045,18 @@ MonoBehaviour:
   _mainGameUI: {fileID: 664134546}
   _sensitvitySlider: {fileID: 429638852}
   _sensText: {fileID: 450848830}
+--- !u!114 &221914033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 221914028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c51c3b14fe9731941a794ae800082386, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &224289256
 PrefabInstance:
   m_ObjectHideFlags: 0

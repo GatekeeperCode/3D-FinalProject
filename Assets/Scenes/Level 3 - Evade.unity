@@ -2110,7 +2110,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -7334,7 +7334,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &424301718
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20458,9 +20458,10 @@ GameObject:
   - component: {fileID: 1417174509}
   - component: {fileID: 1417174511}
   - component: {fileID: 1417174512}
+  - component: {fileID: 1417174513}
   m_Layer: 0
   m_Name: Level3 Manager
-  m_TagString: Untagged
+  m_TagString: LevelManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20605,6 +20606,18 @@ MonoBehaviour:
   _mainGameUI: {fileID: 1831925059}
   _sensitvitySlider: {fileID: 5790692}
   _sensText: {fileID: 73889967}
+--- !u!114 &1417174513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417174508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c51c3b14fe9731941a794ae800082386, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1423522351 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8596533396836783785, guid: 4cdecf70aeb4d544bb76cacf9a6b8d6b, type: 3}
@@ -20886,7 +20899,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
