@@ -25356,6 +25356,14 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2540155741278780537, guid: c97b19a5c0fa6d84bb9682fd82b49d38, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2540155741278780537, guid: c97b19a5c0fa6d84bb9682fd82b49d38, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2546993616758299673, guid: c97b19a5c0fa6d84bb9682fd82b49d38, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
