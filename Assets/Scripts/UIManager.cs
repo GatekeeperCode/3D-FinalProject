@@ -16,12 +16,14 @@ public class UIManager : MonoBehaviour
         _isPaused = false;
         _pauseUI = GameObject.FindGameObjectWithTag("PauseMenu");
         _mainGameUI = GameObject.FindGameObjectWithTag("MainUI");
+
         //DontDestroyOnLoad(this.gameObject);
     }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("ISPaused: " + _isPaused);
         _sensText.text = FindObjectOfType<PlayerLookScript>().sensitivity.ToString();
         /*if(_pauseUI == null && _mainGameUI == null)
         {
@@ -40,8 +42,9 @@ public class UIManager : MonoBehaviour
             }
             else
             {
-                Cursor.lockState = CursorLockMode.None;
                 _isPaused = true;
+                Cursor.lockState = CursorLockMode.None;
+                
                 Time.timeScale = 0;
             }
         }

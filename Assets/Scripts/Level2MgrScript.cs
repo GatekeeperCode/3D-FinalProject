@@ -7,7 +7,7 @@ public class Level2MgrScript : MonoBehaviour
 {
     private TimerScript _timer;
     private bool paused;
-    public GameObject pauseMenu;
+    //public GameObject pauseMenu;
     void Start()
     {
         StartCoroutine(holdLook());
@@ -35,7 +35,7 @@ public class Level2MgrScript : MonoBehaviour
     private void pause()
     {
         Time.timeScale = 0;
-        pauseMenu.SetActive(true);
+        //pauseMenu.SetActive(true);
         paused = true;
     }
 
@@ -43,7 +43,7 @@ public class Level2MgrScript : MonoBehaviour
     private void unpause()
     {
         Time.timeScale = 1.0f;
-        pauseMenu.SetActive(false);
+       // pauseMenu.SetActive(false);
         paused = false;
     }
 
@@ -52,7 +52,7 @@ public class Level2MgrScript : MonoBehaviour
         yield return new WaitForSeconds(8);
         Messenger.Broadcast("StartLook");
         Messenger.Broadcast("StartMove");
-        _timer.StartTimer();
+       // _timer.StartTimer();
 
     }
 }
