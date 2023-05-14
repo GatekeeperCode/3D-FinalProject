@@ -22,23 +22,37 @@ public class PlayerLookScript : MonoBehaviour
         _transform = transform;
         _levelUI = GameObject.FindObjectOfType<UIManager>();
         _levelUI._sensitvitySlider.value = sensitivity;
+
+        Debug.Log("lookLock at start: " + _lookLock);
     }
     
     // Update is called once per frame
     void Update()
     {
-       
-        if (Input.GetKeyDown(KeyCode.Escape))
+        Debug.Log("canlook: " +_levelUI._isPaused);
+        Debug.Log("Looklock: " + _lookLock);
+        
+        if (_lookLock)
+        {
+            canLook = false;
+        }
+        else
+        {
+            canLook = !_levelUI._isPaused;
+        }
+        /*if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (!_levelUI._isPaused && !_lookLock)
             {
+                Debug.Log("Got to true");
                 canLook = true;
             }
             else
             {
+                Debug.Log("Getting to here");
                 canLook = false;
             }
-        }
+        }*/
         Messenger.AddListener("StartLook", canLookNow);
 
         if(canLook)
