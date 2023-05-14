@@ -14,6 +14,7 @@ public class EnemyStealthScript : MonoBehaviour
     public GameObject player;
     public LayerMask _player;
     public bool alert = false;
+    Animator animator;
 
 
     // Start is called before the first frame update
@@ -22,6 +23,7 @@ public class EnemyStealthScript : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.SetDestination(_waypoints[0].position);
         player = GameObject.FindGameObjectWithTag("Player");
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -33,7 +35,9 @@ public class EnemyStealthScript : MonoBehaviour
 
         if ((seePlayer() && angle < 45.0f) || alert)
         {
+            animator.SetBool("animAlert", true);
             agent.SetDestination(player.transform.position);
+            agent.speed = 9;
         }
     }
 
