@@ -22,8 +22,11 @@ public class AlarmLightScript : MonoBehaviour
     {
         _rbody.transform.rotation = Quaternion.Euler(0, rotateAmount, 0);
         rotateAmount += rotateIncrease;
-
-        if (_timer._elapsedTime < 10)
+        if(_timer == null)
+        {
+            rotateIncrease = 1;
+        }
+        else if (_timer._elapsedTime < 10)
         {
             rotateIncrease = 2;
         }
