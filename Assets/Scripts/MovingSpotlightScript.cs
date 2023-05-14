@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyWallScript : MonoBehaviour
+public class MovingSpotlightScript : MonoBehaviour
 {
     [SerializeField]
     private List<Transform> _waypoints;
@@ -32,8 +32,7 @@ public class EnemyWallScript : MonoBehaviour
             _target++;
             if (_target == _waypoints.Count)
             {
-                _waypoints.Reverse();
-                _target = 1;
+                _target = 0;
             }
             agent.SetDestination(_waypoints[_target].position);
         }
