@@ -52,7 +52,7 @@ public class Level2MgrScript : MonoBehaviour
         yield return new WaitForSeconds(8);
         Messenger.Broadcast("StartLook");
         Messenger.Broadcast("StartMove");
-       // _timer.StartTimer();
+        _timer.StartTimer();
 
     }
 }
