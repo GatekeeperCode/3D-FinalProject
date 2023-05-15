@@ -23,14 +23,14 @@ public class PlayerLookScript : MonoBehaviour
         _levelUI = GameObject.FindObjectOfType<UIManager>();
         _levelUI._sensitvitySlider.value = sensitivity;
 
-        Debug.Log("lookLock at start: " + _lookLock);
+        //Debug.Log("lookLock at start: " + _lookLock);
     }
     
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("canlook: " +_levelUI._isPaused);
-        Debug.Log("Looklock: " + _lookLock);
+        //Debug.Log("canlook: " +_levelUI._isPaused);
+        //Debug.Log("Looklock: " + _lookLock);
         
         if (_lookLock)
         {

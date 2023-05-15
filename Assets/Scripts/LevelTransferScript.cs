@@ -20,6 +20,7 @@ public class LevelTransferScript : MonoBehaviour
     {
         if(other.tag.Equals("Player"))
         {
+            print("Found Player");
             Messenger.Broadcast(Messages.LEVEL_TRANSFER);
         }
     }
