@@ -11,7 +11,7 @@ public class Level2MgrScript : MonoBehaviour
     void Start()
     {
         StartCoroutine(holdLook());
-        
+        Cursor.lockState = CursorLockMode.Locked;
         Messenger.AddListener(Messages.LEVEL_TRANSFER, changeLevel);
         _timer = GameObject.FindObjectOfType<TimerScript>();
     }

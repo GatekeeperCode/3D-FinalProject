@@ -20,7 +20,7 @@ public class Level1MgrScript : MonoBehaviour
     void Start()
     {
         StartCoroutine(holdLook());
-
+        Cursor.lockState = CursorLockMode.Locked;
         Messenger.AddListener(Messages.LEVEL_TRANSFER, changeLevel);
         _timer = FindObjectOfType<TimerScript>();
         spawnTime = 5f;
