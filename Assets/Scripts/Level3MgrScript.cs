@@ -8,11 +8,15 @@ public class Level3MgrScript : MonoBehaviour
     private bool paused;
     private TimerScript _timer;
     public GameObject pauseMenu;
+
+    public AudioSource _source;
+    public AudioClip _alarm;
+    bool playOnce = true;
+
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(holdLook());
-        //_timer = GameObject.FindObjectOfType<TimerScript>();
         Messenger.AddListener(Messages.LEVEL_TRANSFER, changeLevel);
         _timer = GameObject.FindObjectOfType<TimerScript>();
     }
@@ -40,6 +44,7 @@ public class Level3MgrScript : MonoBehaviour
         Messenger.RemoveListener(Messages.LEVEL_TRANSFER, changeLevel);
         SceneManager.LoadScene("WinScene");
     }
+
     private void pause()
     {
         Time.timeScale = 0;
@@ -47,7 +52,7 @@ public class Level3MgrScript : MonoBehaviour
         paused = true;
     }
 
-    //Unpauses game and closes pause menu
+    // Unpauses game and closes pause menu
     private void unpause()
     {
         Time.timeScale = 1.0f;
@@ -57,6 +62,20 @@ public class Level3MgrScript : MonoBehaviour
     public void playerDeath()
     {
         SceneManager.LoadScene("EndScene");
+    }
+
+    private void OnEnable()
+    {
+        Messenger.AddListener(Messages.LIGHT_ALERT, playAlarm);
+    }
+
+    public void playAlarm()
+    {
+        if (playOnce)
+        {
+            _source.PlayOneShot(_alarm);
+            playOnce = false;
+        }
     }
 
     IEnumerator holdLook()
