@@ -150,7 +150,7 @@ public class PlayerMovement : MonoBehaviour
             //Direction of movement based on player rotation
             xVelocity = Input.GetAxisRaw("Horizontal");
             zVelocity = Input.GetAxisRaw("Vertical");
-            Debug.Log("Soundcheck: " + ((xVelocity > 0 || zVelocity > 0) && _isGrounded && !_isSliding));
+            //Debug.Log("Soundcheck: " + ((xVelocity > 0 || zVelocity > 0) && _isGrounded && !_isSliding));
             if ((xVelocity > 0 || zVelocity > 0) && _isGrounded && !_isSliding)
             {
                 _walkingStep.enabled = true;
@@ -250,7 +250,7 @@ public class PlayerMovement : MonoBehaviour
     private void Movement()
     {
         
-        Debug.Log(_maxSpeed);
+        //Debug.Log(_maxSpeed);
         _playerRbody.AddForce(Vector3.down * Time.deltaTime * 10f);
         float magnitude = _playerRbody.velocity.magnitude;
         float moveAngle = Mathf.Atan2(_playerRbody.velocity.x, _playerRbody.velocity.z) * Mathf.Rad2Deg;
@@ -315,7 +315,7 @@ public class PlayerMovement : MonoBehaviour
             multiplier = 1f;
         }
         //Debug.Log("Mult1: " + multiplier);
-        Debug.Log("Mult2: " + multiplier2);
+        //Debug.Log("Mult2: " + multiplier2);
         _playerRbody.AddForce(trans.right * xVelocity * _speed * Time.fixedDeltaTime * multiplier);
         _playerRbody.AddForce(trans.forward * zVelocity * _speed * Time.deltaTime * multiplier * multiplier2);
     }
@@ -326,7 +326,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void CrouchReady()
     {
-        Debug.Log("CrouchReady");
+        //Debug.Log("CrouchReady");
         _crouchReady = true;
     }
 
@@ -356,7 +356,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("PLAYING SOUND");
+        //Debug.Log("PLAYING SOUND");
         if(collision.gameObject.tag == "Untagged")
         { 
             //_hitGroundSound = true;
