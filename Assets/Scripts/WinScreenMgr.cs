@@ -14,6 +14,7 @@ public class WinScreenMgr : MonoBehaviour
     private bool _highScoreShowing;
     void Start()
     {
+        Cursor.lockState = CursorLockMode.None;
         _highScoreShowing = false;
         if(PlayerPrefs.GetFloat("Level1BestTime") > PlayerPrefs.GetFloat("PlayerLevel1Time") || PlayerPrefs.GetFloat("Level1BestTime") == 0f)
         {
