@@ -28,6 +28,7 @@ public class Level2MgrScript : MonoBehaviour
         PlayerPrefs.SetFloat("PlayerLevel2Time", _timer._elapsedTime-PlayerPrefs.GetFloat("PlayerLevel1Time"));
         //PlayerPrefs.SetFloat("PlayerTotalTime", _timer._elapsedTime);
         Messenger.RemoveListener(Messages.LEVEL_TRANSFER, changeLevel);
+        _timer.StopTimer();
         SceneManager.LoadScene(3);
     }
 
@@ -52,7 +53,7 @@ public class Level2MgrScript : MonoBehaviour
         yield return new WaitForSeconds(8);
         Messenger.Broadcast("StartLook");
         Messenger.Broadcast("StartMove");
-       // _timer.StartTimer();
+        _timer.StartTimer();
 
     }
 }

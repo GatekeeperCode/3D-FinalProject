@@ -10025,7 +10025,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: ffcc3aa312f8ef344a6d987b6321b2d5, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -25381,6 +25381,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1473185498895397795, guid: c97b19a5c0fa6d84bb9682fd82b49d38, type: 3}
+      propertyPath: _slideSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 2222c6849b8a03047a4399a43e82b1a5, type: 3}
     - target: {fileID: 1542508728161277324, guid: c97b19a5c0fa6d84bb9682fd82b49d38, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
@@ -25437,21 +25441,9 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2540155741278780537, guid: c97b19a5c0fa6d84bb9682fd82b49d38, type: 3}
-      propertyPath: Loop
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2540155741278780537, guid: c97b19a5c0fa6d84bb9682fd82b49d38, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2546993616758299673, guid: c97b19a5c0fa6d84bb9682fd82b49d38, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2818390332100085884, guid: c97b19a5c0fa6d84bb9682fd82b49d38, type: 3}
-      propertyPath: m_Volume
-      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 3046016784655253629, guid: c97b19a5c0fa6d84bb9682fd82b49d38, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -92383,9 +92375,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ButtonScript, Assembly-CSharp
-        m_MethodName: QuitClick
+      - m_Target: {fileID: 221914032}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

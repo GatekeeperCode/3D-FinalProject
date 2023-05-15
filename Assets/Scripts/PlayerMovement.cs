@@ -225,9 +225,10 @@ public class PlayerMovement : MonoBehaviour
             //trans.position = new Vector3(trans.position.x, trans.position.y - 0.5f, trans.position.z);
             if (_playerRbody.velocity.magnitude > 1f)
             {
+                _playerAudio.PlayOneShot(_slideSound);
                 if (_isGrounded)
                 {
-                    _playerAudio.PlayOneShot(_slideSound);
+                    //_playerAudio.PlayOneShot(_slideSound);
                     _crouchReady = false;
                     _isSliding = true;
                     _playerRbody.AddForce(trans.forward * _slideforce);

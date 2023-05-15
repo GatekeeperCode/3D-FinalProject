@@ -34,9 +34,10 @@ public class EnemyStealthScript : MonoBehaviour
     {
 
         Vector3 targetDir = player.transform.position - transform.position;
+        float yDifference = player.transform.position.y - transform.position.y;
         float angle = Vector3.Angle(targetDir, transform.forward);
 
-        if ((seePlayer() && angle < 45.0f) || alert)
+        if ((seePlayer() && angle < 45.0f && yDifference < 1) || alert)
         {
             animator.SetBool("animAlert", true);
             agent.SetDestination(player.transform.position);
