@@ -16,6 +16,7 @@ public class Level3MgrScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         StartCoroutine(holdLook());
         Messenger.AddListener(Messages.LEVEL_TRANSFER, changeLevel);
         _timer = GameObject.FindObjectOfType<TimerScript>();
@@ -42,6 +43,7 @@ public class Level3MgrScript : MonoBehaviour
         PlayerPrefs.SetFloat("PlayerLevel3Time", _timer._elapsedTime - PlayerPrefs.GetFloat("PlayerLevel2Time"));
         PlayerPrefs.SetFloat("PlayerTotalTime", _timer._elapsedTime);
         Messenger.RemoveListener(Messages.LEVEL_TRANSFER, changeLevel);
+
         SceneManager.LoadScene("WinScene");
     }
 
